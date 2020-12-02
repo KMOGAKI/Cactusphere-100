@@ -27,6 +27,6 @@ AzureSphereExplorerの詳細情報は[こちら](https://github.com/matsujirushi
 
 ## インストール方法
 
-1. [AzureSphereExplorer_AT.zip](https://github.com/KMOGAKI/Cactusphere-100/blob/explorer_rc-1/Tools/AzureSphereExplorer/AzureSphereExplorer_AT.zip)をダウンロードしてください。
+1. [AzureSphereExplorer_AT.zip](https://github.com/KMOGAKI/Cactusphere-100/raw/explorer_rc-1/Tools/AzureSphereExplorer/AzureSphereExplorer_AT.zip)をダウンロードしてください。
 1. 適当なフォルダに、`AzureSphereExplorer_AT.zip`を解凍してください。
 1. 解凍した中にある、`AzureSphereExplorer.exe`を起動してください。
