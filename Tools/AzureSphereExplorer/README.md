@@ -1,5 +1,5 @@
 
-## AzureSphereExplorer
+# AzureSphereExplorer
 
 Azure Sphereのデバイスやプロダクト、デバイスグループなどをすばやく簡単に見ることができるツールとしてAzureSphereExplorerがあります。
 
@@ -12,15 +12,15 @@ AzureSphereExplorerの詳細情報は[こちら](https://github.com/matsujirushi
 
 アットマークテクノでは、AzureSphereExplorerをベースにして以下の機能を追加したAzureSphereExplorerの実行ファイルを提供します。
 
-### 追記機能
+## 追記機能
 
 * デバイスClaim
 * SphereOS/アプリのOTA保留/時間指定実行
 
 
-### 要件
+## 要件
 
-#### サポートしているプラットフォーム
+### サポートしているプラットフォーム
 
 * Microsoft Windows 10 (.NET Framework 4.8)
 * Microsoft Windows 10 (.NET 5)
