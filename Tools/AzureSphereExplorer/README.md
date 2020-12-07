@@ -40,7 +40,7 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceClaimWindow"が表示されます。
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=70% style="display: block; margin: auto;"></a>
 
 "DeviceClaimWindow"の"Claim"ボタンを押下します。
 
@@ -48,11 +48,11 @@ AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceCla
 
 問題ない場合は、「はい(Y)」ボタンを押下します。
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png" width=70% style="display: block; margin: auto;"></a>
 
 問題なくクレームが実行されると、"Claim is finished."と記載されたウィンドウが表示されます。その際、"DeviceClaimWindow"の"deviceids"の"success"の下に、クレームしたデバイスのデバイスIDが表示されている事を確認します。問題がない場合、"OK"ボタンを押下してウィンドウを閉じます。
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png" width=70% style="display: block; margin: auto;"></a>
 
 これでクレームは完了です。
 
@@ -69,17 +69,17 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意のデバイスを選び、 **右クリック** します。一覧から"Update Properties"を選択します。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=70% style="display: block; margin: auto;"></a>
 
 "UpdatePropertiesWindow"が表示されます。この際、先ほど選択したデバイスIDがデフォルトで選択された状態になっています。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png" width=70% style="display: block; margin: auto;"></a>
 
 "CentralAppName:"に、＊＊＊の値を入力します。
 
 "APIToken:"に、＊＊＊の値を入力します。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=70% style="display: block; margin: auto;"></a>
 
 
 "FW Update Time"にはファームウェア、"OS Update Time"にはOSをアップデートする時間を設定する事ができます。
@@ -90,7 +90,7 @@ AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意�
 
 "Update"ボタンを押下して、アップデート保留機能を設定します。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=70% style="display: block; margin: auto;"></a>
 
 ＊＊＊＊が表示されます。""と表示された場合は、アップデート保留機能の設定に成功しています。
 
