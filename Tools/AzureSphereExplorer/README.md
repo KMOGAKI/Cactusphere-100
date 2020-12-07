@@ -58,7 +58,7 @@ AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceCla
 
 ### SphereOS/アプリのOTA保留/時間指定実行
 
-Cactusphereはアップデート保留機能[^2]を有しています。この機能を用いる事で、OSとFWのOTAを遅延させる事が出来ます。
+Cactusphereはアップデート保留機能[^2]を有しています。この機能を用いる事で、OSとFWのOTAを遅延させる事ができます。
 
 [^2]:アップデート保留機能
 アップデート保留機能についての詳細についてはソフトウェアマニュアルを参照してください。
@@ -67,8 +67,33 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 ### AzureSphereExplorerからOTA保留機能を利用する方法
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=70%></a>
+AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意のデバイスを選び、 **右クリック** します。一覧から"Update Properties"を選択します。
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=70%></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=70%></a>
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=70%></a>
+"UpdatePropertiesWindow"が表示されます。この際、先ほど選択したデバイスIDがデフォルトで選択された状態になっています。
+
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png" width=70%></a>
+
+"CentralAppName:"に、＊＊＊の値を入力します。
+
+"APIToken:"に、＊＊＊の値を入力します。
+
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=70%></a>
+
+
+"FW Update Time"にはファームウェア、"OS Update Time"にはOSをアップデートする時間を設定する事ができます。
+
+アプリケーションテンプレート作成時に、設定したタイムゾーンを指定できます。日本時間
+
+この際、startの時間とendの時間を同じにすることはできません。
+
+"Update"ボタンを押下して、アップデート保留機能を設定します。
+
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=70%></a>
+
+＊＊＊＊が表示されます。""と表示された場合は、アップデート保留機能の設定に成功しています。
+
+[画像]
+
+これで、アップデート保留機能の設定は完了です。
