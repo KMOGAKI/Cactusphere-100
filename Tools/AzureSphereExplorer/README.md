@@ -24,16 +24,28 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 1. 解凍した中にある、`AzureSphereExplorer.exe`を起動してください。
 
 
-## 使い方
+## 基本機能について
+
+AzureSphereExplorerには3つのペイン(表示領域)があります。左ペインにProductとDevice Groupsの一覧が表示され、右ペインにはDevice一覧が表示されます。各項目の上で右クリックをすることで、項目の作成や削除、デプロイ設定、デバイスグループの変更などを行う事ができます。
+
+<a href="../../Images/AzureSphereExplorer_MainWindow_002.png"><img src="../../Images/AzureSphereExplorer_MainWindow_002.png" width=70% style="display: block; margin: auto;"></a>
+
+また、ProductかDevice Groupsの一覧上で右クリックし"Extract Devices from [Product/DeviceGroup]"を選択する事で、"ExtractWindow"を表示する事ができます。
+
+<a href="../../Images/AzureSphereExplorer_ExtractWindow_001.png"><img src="../../Images/AzureSphereExplorer_ExtractWindow_001.png" width=70% style="display: block; margin: auto;"></a>
+
+このウィンドウではProduct、Device Groups、Deviceを左から階層表示します。各プロダクトとデバイスグループに紐付いたデバイスの一覧を表示する事ができるため、全体の状態を把握する際に役立ちます。
+
+また、デバイスグループ変更やクレームなどの機能では、デバイスIDが記載されたcsvファイルを読み込む事で一括設定する事も可能です。
 
 ## 追記機能の使い方
 
 ### デバイスのクレーム (claim) 機能
 
-Azure Sphere テナントに接続できるようにするためには、Azure Sphere テナントにクレーム[^1] 作業を行ってテナントにデバイスを紐付ける必要があります。AzureSphereExplorerでは、一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを**変更することはできない**ため、注意して実施して下さい。
+Azure Sphere テナントに接続できるようにするためには、Azure Sphere テナントにクレーム作業を行ってテナントにデバイスを紐付ける必要があります。AzureSphereExplorerでは、一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを**変更することはできない**ため、注意して実施して下さい。
 
-[^1]: クレーム
 クレームについての詳細についてはソフトウェアマニュアルを参照してください。ソフトウェアマニュアルのダウンロードには、Armadilloサイトのユーザー登録とログインが必要になります。
+
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 ### AzureSphereExplorerからデバイスのクレーム (claim) を行う方法
@@ -58,9 +70,8 @@ AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceCla
 
 ### SphereOS/アプリのOTA保留/時間指定実行
 
-Cactusphereはアップデート保留機能[^2]を有しています。この機能を用いる事で、OSとFWのOTAを遅延させる事ができます。
+Cactusphereはアップデート保留機能を有しています。この機能を用いる事で、OSとFWのOTAを遅延させる事ができます。
 
-[^2]:アップデート保留機能
 アップデート保留機能についての詳細についてはソフトウェアマニュアルを参照してください。
 ソフトウェアマニュアルのダウンロードには、Armadilloサイトのユーザー登録とログインが必要になります。
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
