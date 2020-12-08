@@ -71,29 +71,26 @@ AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意�
 
 <a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=70% style="display: block; margin: auto;"></a>
 
-"UpdatePropertiesWindow"が表示されます。この際、先ほど選択したデバイスIDがデフォルトで選択された状態になっています。
-
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png" width=70% style="display: block; margin: auto;"></a>
-
-"CentralAppName:"に、＊＊＊の値を入力します。
-
-"APIToken:"に、＊＊＊の値を入力します。
+"UpdatePropertiesWindow"が表示されます。アップデート保留機能を利用する際、IoT CentralアプリケーションのURLとAPI トークンの値が必要になります。
 
 <a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=70% style="display: block; margin: auto;"></a>
+
+* ①："CentralAppName:"に、IoT CentralアプリケーションのURLを入力します。IoT CentralアプリケーションのURLはIoT Centralの「管理」→「お客様のアプリケーション」→「アプリケーションURL」で確認する事ができます。
+
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_009.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_009.png" width=70% style="display: block; margin: auto;"></a>
+
+* ②："APIToken:"に、API トークンを入力します。API トークンはIoT Centralの「管理」→「API トークン」→「トークンの生成」で生成した際に表示される値です。（"sr="より後の数値を入れて下さい）API トークンは一度しか表示されないため、既に表示させてAPIトークンの値が不明な場合は、もう一度任意の名前でAPIトークンを作成し、その値を設定して下さい。
+
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_005.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_005.png" width=70% style="display: block; margin: auto;"></a>
 
 
 "FW Update Time"にはファームウェア、"OS Update Time"にはOSをアップデートする時間を設定する事ができます。
 
-アプリケーションテンプレート作成時に、設定したタイムゾーンを指定できます。日本時間
-
-この際、startの時間とendの時間を同じにすることはできません。
-
-"Update"ボタンを押下して、アップデート保留機能を設定します。
-
 <a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=70% style="display: block; margin: auto;"></a>
 
-＊＊＊＊が表示されます。""と表示された場合は、アップデート保留機能の設定に成功しています。
+この際、startの時間とendの時間を同じにすることはできませんので、注意が必要です。
 
-[画像]
+"Update"ボタンを押下して、アップデート保留機能を設定します。
+"OK"と表記されたウィンドウが表示された場合、アップデート保留機能の設定に成功しています。
 
 これで、アップデート保留機能の設定は完了です。
