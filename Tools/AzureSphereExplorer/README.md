@@ -52,7 +52,7 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceClaimWindow"が表示されます。
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=90% style="display: block; margin: auto;"></a>
 
 "SelectCSV"ボタンを押下し、ローカルフォルダの中からデバイスIDが書かれたcsvファイルを読み込みます。今回の例ではデバイスIDが一つだけ記載された"cactusphere_device_id_list.csv"という名前のファイルを選択しました。   csvファイルの読み込みに成功すると、"SelectFilePath:"にファイルのパスが表示されます。
 
@@ -60,11 +60,11 @@ AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceCla
 
 問題ない場合は、「はい(Y)」ボタンを押下します。
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_002.png" width=70% style="display: block; margin: auto;"></a>
 
 問題なくクレームが実行されると、"Claim is finished."と記載されたウィンドウが表示されます。その際、"DeviceClaimWindow"の"deviceids"の"success"の下に、クレームしたデバイスのデバイスIDが表示されている事を確認します。問題がない場合、"OK"ボタンを押下してウィンドウを閉じます。
 
-<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png" width=70% style="display: block; margin: auto;"></a>
 
 これでデバイスのクレームは完了です。
 
@@ -80,11 +80,11 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意のデバイスを選び、 **右クリック** します。一覧から"Update Properties"を選択します。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=90% style="display: block; margin: auto;"></a>
 
 "UpdatePropertiesWindow"が表示されます。アップデート保留機能を利用する際、IoT CentralアプリケーションのURLとAPI トークンの値が必要になります。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=70% style="display: block; margin: auto;"></a>
 
 * ①："CentralAppName:"に、IoT CentralアプリケーションのURLを入力します。IoT CentralアプリケーションのURLはIoT Centralの「管理」→「お客様のアプリケーション」→「アプリケーションURL」で確認する事ができます。
 
@@ -97,7 +97,7 @@ AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意�
 
 "FW Update Time"にはファームウェア、"OS Update Time"にはOSをアップデートする時間を設定する事ができます。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=90% style="display: block; margin: auto;"></a>
 
 この際、startの時間とendの時間を同じにすることはできませんので、注意が必要です。
 
