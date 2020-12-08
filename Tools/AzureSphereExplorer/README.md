@@ -54,9 +54,9 @@ AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceCla
 
 <a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=100% style="display: block; margin: auto;"></a>
 
-"DeviceClaimWindow"の"Claim"ボタンを押下します。
+"SelectCSV"ボタンを押下し、ローカルフォルダの中からデバイスIDが書かれたcsvファイルを読み込みます。今回の例ではデバイスIDが一つだけ記載された"cactusphere_device_id_list.csv"という名前のファイルを選択しました。   csvファイルの読み込みに成功すると、"SelectFilePath:"にファイルのパスが表示されます。
 
-"Attention"ウィンドウが表示され、クレームをしてよいか確認されます。**一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを変更することはできないため、注意して実施して下さい。** 
+"Claim"ボタンを押下すると、"Attention"ウィンドウが表示され、クレームをしてよいか確認されます。**一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを変更することはできないため、注意して実施して下さい。**
 
 問題ない場合は、「はい(Y)」ボタンを押下します。
 
@@ -66,7 +66,7 @@ AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceCla
 
 <a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_003.png" width=100% style="display: block; margin: auto;"></a>
 
-これでクレームは完了です。
+これでデバイスのクレームは完了です。
 
 ### SphereOS/アプリのOTA保留/時間指定実行
 
