@@ -54,15 +54,15 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを�
 
 "Deployments..."を選択するとDeploymentsウィンドウが表示されます。画像の例では"Current Deployment Date"と"Images#"一覧は空ですが、既にデプロイ設定しているデバイスグループでは"Current Deployment Date"と"Images#"に、それぞれデプロイ設定を行った日時と、デプロイ設定を行ったイメージ数が表示されます。
 
-<a href="../../Images/AzureSphereExplorer_Deploy_002.png"><img src="../../Images/AzureSphereExplorer_Deploy_002.png" width=80% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_Deploy_002.png"><img src="../../Images/AzureSphereExplorer_Deploy_002.png" width=60% style="display: block; margin: auto;"></a>
 
 "Upload"ボタンを押下すると、"UploadWindow"が表示されます。
 
-<a href="../../Images/AzureSphereExplorer_Deploy_003.png"><img src="../../Images/AzureSphereExplorer_Deploy_003.png" width=80% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_Deploy_003.png"><img src="../../Images/AzureSphereExplorer_Deploy_003.png" width=60% style="display: block; margin: auto;"></a>
 
 "Select"ボタンを押下してデプロイする対象のイメージを選択します。設定が完了すると、"SelectFilePath:"に選択したファイルのパスが表示されます。
 
-<a href="../../Images/AzureSphereExplorer_Deploy_004.png"><img src="../../Images/AzureSphereExplorer_Deploy_004.png" width=80% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_Deploy_004.png"><img src="../../Images/AzureSphereExplorer_Deploy_004.png" width=60% style="display: block; margin: auto;"></a>
 
  * ① **Uploadボタン** ：対象をイメージをテナントにアップロードしていない場合は、"Upload"を押下する事で、アップロードを実行できます。既にイメージがアップロードされている場合は"Image is Already Upload."と表示されます。
 
@@ -77,7 +77,7 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを�
 
 デプロイが成功している場合、Deploymentsウィンドウの"Current Deployment Date"と"Images#"一覧にデプロイ設定を行った日時と、デプロイ設定を行ったイメージの数が表示されます。
 
-<a href="../../Images/AzureSphereExplorer_Deploy_008.png"><img src="../../Images/AzureSphereExplorer_Deploy_008.png" width=80% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_Deploy_008.png"><img src="../../Images/AzureSphereExplorer_Deploy_008.png" width=60% style="display: block; margin: auto;"></a>
 
 問題が無ければ"Close"を押下してウィンドウを閉じます。
 
