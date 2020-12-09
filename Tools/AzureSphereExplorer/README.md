@@ -74,6 +74,7 @@ Cactusphereはアップデート保留機能を有しています。この機能
 
 アップデート保留機能についての詳細についてはソフトウェアマニュアルを参照してください。
 ソフトウェアマニュアルのダウンロードには、Armadilloサイトのユーザー登録とログインが必要になります。
+
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 ### AzureSphereExplorerからOTA保留機能を利用する方法
