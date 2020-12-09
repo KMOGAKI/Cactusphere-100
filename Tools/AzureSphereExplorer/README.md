@@ -64,16 +64,16 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを�
 
 <a href="../../Images/AzureSphereExplorer_Deploy_004.png"><img src="../../Images/AzureSphereExplorer_Deploy_004.png" width=80% style="display: block; margin: auto;"></a>
 
- * ①："Azure Sphere Developer Command Prompt"から"azsphere image add"コマンドを実行した時に表示されるイメージIDを設定します。詳しくはソフトウェアマニュアルの「4.3.4. Cactusphere ファームウェアを書き込む
+ * ① **Uploadボタン** ：対象をイメージをテナントにアップロードしていない場合は、"Upload"を押下する事で、アップロードを実行できます。既にイメージがアップロードされている場合は"Image is Already Upload."と表示されます。
+
+ * ② **イメージIDの指定** ：テナントにアップロード済みのイメージIDを設定します。",(カンマ)"で区切る事で複数のイメージを指定する事ができます。もし、イメージIDが不明な場合は、"Azure Sphere Developer Command Prompt"から"azsphere image add --filepath [イメージのパス]"コマンドを実行する事で確認できます。詳しくはソフトウェアマニュアルの「4.3.4. Cactusphere ファームウェアを書き込む
 」を参照して下さい。
 
 <a href="../../Images/AzureSphereExplorer_Deploy_007.png"><img src="../../Images/AzureSphereExplorer_Deploy_007.png" width=100% style="display: block; margin: auto;"></a>
 
- * ②：対象をイメージをテナントにアップロードしていない場合は、"Upload"を押下する事で、アップロードを実行できます。既にイメージがアップロードされている場合は"Image is Already Upload."と表示されます。
+ * ③ **Deployボタン** ：デプロイの準備ができたら"Deploy"を押下しデプロイを実行します。
 
- * ③：デプロイの準備ができたら"Deploy"を押下しデプロイを実行します。
-
- * ④：デプロイに成功すると"Deployment is success."と記載されたウィンドウが表示されるため"OK"を押下します。その後、"UploadWindow"の"Close"を押下してウィンドウを閉じます。
+ * ③ **Closeボタン** ：デプロイに成功すると"Deployment is success."と記載されたウィンドウが表示されるため"OK"を押下します。その後、"UploadWindow"の"Close"を押下してウィンドウを閉じます。
 
 デプロイが成功している場合、Deploymentsウィンドウの"Current Deployment Date"と"Images#"一覧にデプロイ設定を行った日時と、デプロイ設定を行ったイメージの数が表示されます。
 
