@@ -28,7 +28,7 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 
 AzureSphereExplorerには3つのペイン(表示領域)があります。左ペインにProductとDevice Groupsの一覧が表示され、右ペインにはDevice一覧が表示されます。各項目の上で右クリックをすることで、項目の作成や削除、デプロイ設定、デバイスグループの変更などを行う事ができます。
 
-<a href="https://github.com/matsujirushi/AzureSphereExplorer/blob/master/media/1.png"><img src="https://github.com/matsujirushi/AzureSphereExplorer/blob/master/media/1.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_MainWindow_002.png"><img src="../../Images/AzureSphereExplorer_MainWindow_002.png" width=100% style="display: block; margin: auto;"></a>
 
 また、ProductかDevice Groupsの一覧上で右クリックし"Extract Devices from [Product/DeviceGroup]"を選択する事で、"ExtractWindow"を表示する事ができます。
 
