@@ -52,9 +52,13 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを�
 
 <a href="../../Images/AzureSphereExplorer_Deploy_001.png"><img src="../../Images/AzureSphereExplorer_Deploy_001.png" width=100% style="display: block; margin: auto;"></a>
 
-"Deployments..."を選択するとDeploymentsウィンドウが表示されます。画像の例では"Current Deployment Date"と"Images#"一覧は空ですが、既にデプロイ設定しているデバイスグループでは"Current Deployment Date"と"Images#"に、それぞれデプロイ設定を行った日時と、デプロイ設定を行ったイメージ数が表示されます。
+"Deployments..."を選択するとDeploymentsウィンドウが表示されます。
 
 <a href="../../Images/AzureSphereExplorer_Deploy_002.png"><img src="../../Images/AzureSphereExplorer_Deploy_002.png" width=60% style="display: block; margin: auto;"></a>
+
+(
+    画像の例では"Current Deployment Date"と"Images#"一覧は空ですが、既にデプロイ設定しているデバイスグループでは"Current Deployment Date"と"Images#"に、それぞれデプロイ設定を行った日時と、デプロイ設定を行ったイメージ数が表示されます。
+)
 
 "Upload"ボタンを押下すると、"UploadWindow"が表示されます。
 
