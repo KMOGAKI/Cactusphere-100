@@ -60,16 +60,16 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを�
 
 <a href="../../Images/AzureSphereExplorer_Deploy_003.png"><img src="../../Images/AzureSphereExplorer_Deploy_003.png" width=80% style="display: block; margin: auto;"></a>
 
-"Select"ボタンを押下してデプロイ対象のイメージを選択すると、"SelectFilePath:"に選択したファイルのパスが表示されます。
+"Select"ボタンを押下してデプロイする対象のイメージを選択します。設定が完了すると、"SelectFilePath:"に選択したファイルのパスが表示されます。
 
 <a href="../../Images/AzureSphereExplorer_Deploy_004.png"><img src="../../Images/AzureSphereExplorer_Deploy_004.png" width=80% style="display: block; margin: auto;"></a>
 
- * ①：対象をイメージをテナントにアップロードしていない場合は、"Upload"を押下する事で、アップロードを実行できます。既にイメージがアップロードされている場合は"Image is Already Upload."と表示されます。
-
- * ②："Azure Sphere Developer Command Prompt"から"azsphere image add"コマンドを実行した時に表示されるイメージIDを設定します。詳しくはソフトウェアマニュアルの「4.3.4. Cactusphere ファームウェアを書き込む
+ * ①："Azure Sphere Developer Command Prompt"から"azsphere image add"コマンドを実行した時に表示されるイメージIDを設定します。詳しくはソフトウェアマニュアルの「4.3.4. Cactusphere ファームウェアを書き込む
 」を参照して下さい。
 
 <a href="../../Images/AzureSphereExplorer_Deploy_007.png"><img src="../../Images/AzureSphereExplorer_Deploy_007.png" width=100% style="display: block; margin: auto;"></a>
+
+ * ②：対象をイメージをテナントにアップロードしていない場合は、"Upload"を押下する事で、アップロードを実行できます。既にイメージがアップロードされている場合は"Image is Already Upload."と表示されます。
 
  * ③：デプロイの準備ができたら"Deploy"を押下しデプロイを実行します。
 
