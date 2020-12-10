@@ -46,9 +46,9 @@ Azure Sphere には Azure Sphere アプリケーションを更新するため�
 
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
-### AzureSphereExplorerからデプロイを行う方法
+### AzureSphereExplorerからデプロイ設定を行う方法
 
-AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを行うデバイスグループを選択し、右クリックします。("ExtractWindow"の"Device Groups"からも同じ事ができます。)
+AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイ設定を行うデバイスグループを選択し、右クリックします。("ExtractWindow"の"Device Groups"からも同じ事ができます。)
 
 <a href="../../Images/AzureSphereExplorer_Deploy_001.png"><img src="../../Images/AzureSphereExplorer_Deploy_001.png" width=100% style="display: block; margin: auto;"></a>
 
@@ -64,7 +64,7 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを�
 
 <a href="../../Images/AzureSphereExplorer_Deploy_003.png"><img src="../../Images/AzureSphereExplorer_Deploy_003.png" width=60% style="display: block; margin: auto;"></a>
 
-"Select"ボタンを押下してデプロイする対象のイメージを選択します。設定が完了すると、"SelectFilePath:"に選択したファイルのパスが表示されます。
+"Select"ボタンを押下してデプロイ設定するイメージを選択します。設定が完了すると、"SelectFilePath:"に選択したファイルのパスが表示されます。
 
 <a href="../../Images/AzureSphereExplorer_Deploy_004.png"><img src="../../Images/AzureSphereExplorer_Deploy_004.png" width=60% style="display: block; margin: auto;"></a>
 
@@ -75,17 +75,17 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイを�
 
 <a href="../../Images/AzureSphereExplorer_Deploy_007.png"><img src="../../Images/AzureSphereExplorer_Deploy_007.png" width=100% style="display: block; margin: auto;"></a>
 
- * ③ **Deployボタン** ：デプロイの準備ができたら"Deploy"を押下しデプロイを実行します。
+ * ③ **Deployボタン** ：デプロイ設定の準備ができたら"Deploy"を押下します。
 
- * ③ **Closeボタン** ：デプロイに成功すると"Deployment is success."と記載されたウィンドウが表示されるため"OK"を押下します。その後、"UploadWindow"の"Close"を押下してウィンドウを閉じます。
+ * ④ **Closeボタン** ：デプロイ設定に成功すると"Deployment is success."と記載されたウィンドウが表示されるため"OK"を押下します。その後、"UploadWindow"の"Close"を押下してウィンドウを閉じます。
 
-デプロイが成功している場合、Deploymentsウィンドウの"Current Deployment Date"と"Images#"一覧にデプロイ設定を行った日時と、デプロイ設定を行ったイメージの数が表示されます。
+デプロイ設定が成功している場合、Deploymentsウィンドウの"Current Deployment Date"と"Images#"一覧にデプロイ設定を行った日時と、デプロイ設定を行ったイメージの数が表示されます。
 
 <a href="../../Images/AzureSphereExplorer_Deploy_008.png"><img src="../../Images/AzureSphereExplorer_Deploy_008.png" width=60% style="display: block; margin: auto;"></a>
 
 問題が無ければ"Close"を押下してウィンドウを閉じます。
 
-これでデプロイは完了です。
+これでデプロイ設定は完了です。
 
 ## 追記機能の使い方
 
@@ -103,7 +103,7 @@ AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceCla
 
 <a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=90% style="display: block; margin: auto;"></a>
 
-"SelectCSV"ボタンを押下し、ローカルフォルダの中からデバイスIDが書かれたcsvファイルを読み込みます。今回の例ではデバイスIDが一つだけ記載された"cactusphere_device_id_list.csv"という名前のファイルを選択しました。   csvファイルの読み込みに成功すると、"SelectFilePath:"にファイルのパスが表示されます。
+"SelectCSV"ボタンを押下し、ローカルフォルダの中からデバイスIDが書かれたcsvファイルを読み込みます。今回の例ではデバイスIDが一つだけ記載された"cactusphere_device_id_list.csv"という名前のファイルを選択しました。csvファイルの読み込みに成功すると、"SelectFilePath:"にファイルのパスが表示されます。
 
 "Claim"ボタンを押下すると、"Attention"ウィンドウが表示され、クレームをしてよいか確認されます。**一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを変更することはできないため、注意して実施して下さい。**
 
