@@ -28,7 +28,7 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 
 AzureSphereExplorerには3つのペイン(表示領域)があります。左ペインにProductとDevice Groupsの一覧が表示され、右ペインにはDevice一覧が表示されます。各項目の上で右クリックをすることで、項目の作成や削除、デプロイ設定、デバイスグループの変更などを行う事ができます。
 
-<a href="../../Images/AzureSphereExplorer_MainWindow_002.png"><img src="../../Images/AzureSphereExplorer_MainWindow_002.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_MainWindow_001.png"><img src="../../Images/AzureSphereExplorer_MainWindow_001.png" width=100% style="display: block; margin: auto;"></a>
 
 また、ProductかDevice Groupsの一覧上で右クリックし"Extract Devices from [Product/DeviceGroup]"を選択する事で、"ExtractWindow"を表示する事ができます。
 
@@ -73,7 +73,7 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイ設�
  * ② **イメージIDの指定** ：テナントにアップロード済みのイメージIDを設定します。",(カンマ)"で区切る事で複数のイメージを指定する事ができます。もし、イメージIDが不明な場合は、"Azure Sphere Developer Command Prompt"から"azsphere image add --filepath [イメージのパス]"コマンドを実行する事で確認できます。詳しくはソフトウェアマニュアルの「4.3.4. Cactusphere ファームウェアを書き込む
 」を参照して下さい。
 
-<a href="../../Images/AzureSphereExplorer_Deploy_007.png"><img src="../../Images/AzureSphereExplorer_Deploy_007.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_Deploy_005.png"><img src="../../Images/AzureSphereExplorer_Deploy_005.png" width=100% style="display: block; margin: auto;"></a>
 
  * ③ **Deployボタン** ：デプロイ設定の準備ができたら"Deploy"を押下します。
 
@@ -81,7 +81,7 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイ設�
 
 デプロイ設定が成功している場合、Deploymentsウィンドウの"Current Deployment Date"と"Images#"一覧にデプロイ設定を行った日時と、デプロイ設定を行ったイメージの数が表示されます。
 
-<a href="../../Images/AzureSphereExplorer_Deploy_008.png"><img src="../../Images/AzureSphereExplorer_Deploy_008.png" width=60% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_Deploy_006.png"><img src="../../Images/AzureSphereExplorer_Deploy_006.png" width=60% style="display: block; margin: auto;"></a>
 
 問題が無ければ"Close"を押下してウィンドウを閉じます。
 
@@ -134,20 +134,20 @@ AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意�
 
 "UpdatePropertiesWindow"が表示されます。アップデート保留機能を利用する際、IoT CentralアプリケーションのURLとAPI トークンの値が必要になります。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=70% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_002.png" width=70% style="display: block; margin: auto;"></a>
 
 * ①："CentralAppName:"に、IoT CentralアプリケーションのURLを入力します。IoT CentralアプリケーションのURLはIoT Centralの「管理」→「お客様のアプリケーション」→「アプリケーションURL」で確認する事ができます。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_009.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_009.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_003.png" width=100% style="display: block; margin: auto;"></a>
 
 * ②："APIToken:"に、API トークンを入力します。API トークンはIoT Centralの「管理」→「API トークン」→「トークンの生成」で生成した際に表示される値です。（"sr="より後の数値を入れて下さい）API トークンは一度しか表示されないため、既に表示させてAPIトークンの値が不明な場合は、もう一度任意の名前でAPIトークンを作成し、その値を設定して下さい。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_005.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_005.png" width=100% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=100% style="display: block; margin: auto;"></a>
 
 
 "FW Update Time"にはファームウェア、"OS Update Time"にはOSをアップデートする時間を設定する事ができます。
 
-<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_004.png" width=90% style="display: block; margin: auto;"></a>
+<a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_005.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_005.png" width=90% style="display: block; margin: auto;"></a>
 
 この際、startの時間とendの時間を同じにすることはできませんので、注意が必要です。
 
