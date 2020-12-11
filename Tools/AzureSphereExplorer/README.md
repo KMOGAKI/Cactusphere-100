@@ -1,9 +1,9 @@
 
-# AzureSphereExplorer
+# Azure Sphere Explorer
 
 Azure Sphereのデバイスやプロダクト、デバイスグループなどをすばやく簡単に見ることができるツールとして、AzureSphereExplorerがあります。AzureSphereExplorerの詳細情報は[こちら](https://github.com/matsujirushi/AzureSphereExplorer)を参照してください。
 
-アットマークテクノでは、AzureSphereExplorerをベースにして、以下の機能を追加したAzureSphereExplorerの実行ファイルを提供します。
+アットマークテクノでは、Azure Sphere Explorerをベースにして、以下の機能を追加したAzure Sphere Explorerの実行ファイルを提供します。
 
 ## 追記機能一覧
 
@@ -26,7 +26,7 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 
 ## 基本機能について
 
-AzureSphereExplorerには3つのペイン(表示領域)があります。左ペインにProductとDevice Groupsの一覧が表示され、右ペインにはDevice一覧が表示されます。各項目の上で右クリックをすることで、項目の作成や削除、デプロイ設定、デバイスグループの変更などを行う事ができます。
+Azure Sphere Explorerには3つのペイン(表示領域)があります。左ペインにProductとDevice Groupsの一覧が表示され、右ペインにはDevice一覧が表示されます。各項目の上で右クリックをすることで、項目の作成や削除、デプロイ設定、デバイスグループの変更などを行う事ができます。
 
 <a href="../../Images/AzureSphereExplorer_MainWindow_001.png"><img src="../../Images/AzureSphereExplorer_MainWindow_001.png" width=100% style="display: block; margin: auto;"></a>
 
@@ -46,9 +46,9 @@ Azure Sphere には Azure Sphere アプリケーションを更新するため�
 
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
-### AzureSphereExplorerからデプロイ設定を行う方法
+### Azure Sphere Explorerからデプロイ設定を行う方法
 
-AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイ設定を行うデバイスグループを選択し、右クリックします。("ExtractWindow"の"Device Groups"からも同じ事ができます。)
+Azure Sphere Explorerの"Device Groups"ペインの一覧から、デプロイ設定を行うデバイスグループを選択し、右クリックします。("ExtractWindow"の"Device Groups"からも同じ事ができます。)
 
 <a href="../../Images/AzureSphereExplorer_Deploy_001.png"><img src="../../Images/AzureSphereExplorer_Deploy_001.png" width=100% style="display: block; margin: auto;"></a>
 
@@ -91,15 +91,15 @@ AzureSphereExplorerの"Device Groups"ペインの一覧から、デプロイ設�
 
 ### デバイスのクレーム (claim) 機能
 
-Azure Sphere テナントに接続できるようにするためには、Azure Sphere テナントにクレーム作業を行ってテナントにデバイスを紐付ける必要があります。AzureSphereExplorerでは、一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを**変更することはできない**ため、注意して実施して下さい。
+Azure Sphere テナントに接続できるようにするためには、Azure Sphere テナントにクレーム作業を行ってテナントにデバイスを紐付ける必要があります。Azure Sphere Explorerでは、一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを**変更することはできない**ため、注意して実施して下さい。
 
 クレームについての詳細についてはソフトウェアマニュアルを参照してください。ソフトウェアマニュアルのダウンロードには、Armadilloサイトのユーザー登録とログインが必要になります。
 
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
-### AzureSphereExplorerからデバイスのクレーム (claim) を行う方法
+### Azure Sphere Explorerからデバイスのクレーム (claim) を行う方法
 
-AzureSphereExplorerの"Device"タブから"Claim"を選択すると、"DeviceClaimWindow"が表示されます。
+Azure Sphere Explorerの"Device"タブから"Claim"を選択すると、"DeviceClaimWindow"が表示されます。
 
 <a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=90% style="display: block; margin: auto;"></a>
 
@@ -126,9 +126,9 @@ Cactusphereはアップデート保留機能を有しています。この機能
 
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
-### AzureSphereExplorerからOTA保留機能を利用する方法
+### Azure Sphere ExplorerからOTA保留機能を利用する方法
 
-AzureSphereExplorerの"Devices"ペイン内のデバイスID一覧から任意のデバイスを選び、 **右クリック** します。一覧から"Update Properties"を選択します。
+Azure Sphere Explorerの"Devices"ペイン内のデバイスID一覧から任意のデバイスを選び、 **右クリック** します。一覧から"Update Properties"を選択します。
 
 <a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=90% style="display: block; margin: auto;"></a>
 
