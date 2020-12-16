@@ -1,9 +1,9 @@
 
-# Azure Sphere Explorer
+# Azure Sphere Explorer for Cactusphere
 
-Azure Sphereのデバイスやプロダクト、デバイスグループなどをすばやく簡単に見ることができるツールとして、AzureSphereExplorerがあります。AzureSphereExplorerの詳細情報は[こちら](https://github.com/matsujirushi/AzureSphereExplorer)を参照してください。
+Azure Sphereのデバイスやプロダクト、デバイスグループなどをすばやく簡単に見ることができるツールとして、Azure Sphere Explorerがあります。Azure Sphere Explorerの詳細情報は[こちら](https://github.com/matsujirushi/AzureSphereExplorer)を参照してください。
 
-アットマークテクノでは、Azure Sphere Explorerをベースにして、以下の機能を追加したAzure Sphere Explorerの実行ファイルを提供します。
+アットマークテクノでは、Azure Sphere Explorerをベースにして、以下の機能を追加したAzure Sphere Explorer for Cactusphereの実行ファイルを提供します。
 
 ## 追記機能一覧
 
@@ -19,14 +19,14 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 
 ## インストール方法
 
-1. [AzureSphereExplorer_AT.zip](https://github.com/KMOGAKI/Cactusphere-100/raw/explorer_rc-1/Tools/AzureSphereExplorer/AzureSphereExplorer_AT.zip)をダウンロードしてください。
-1. 適当なフォルダに、`AzureSphereExplorer_AT.zip`を解凍してください。
-1. 解凍した中にある、`AzureSphereExplorer.exe`を起動してください。
+1. [AzureSphereExplorerForCactusphere.zip](https://github.com/KMOGAKI/Cactusphere-100/raw/explorer_rc-1/Tools/AzureSphereExplorerForCactusphere/AzureSphereExplorerForCactusphere.zip)をダウンロードしてください。
+1. 適当なフォルダに、`AzureSphereExplorerForCactusphere.zip`を解凍してください。
+1. 解凍した中にある、`AzureSphereExplorerForCactusphere.exe`を起動してください。
 
 
 ## 基本機能について
 
-Azure Sphere Explorerには3つのペイン(表示領域)があります。左ペインにProductとDevice Groupsの一覧が表示され、右ペインにはDevice一覧が表示されます。各項目の上で右クリックをすることで、項目の作成や削除、デプロイ設定、デバイスグループの変更などを行う事ができます。
+Azure Sphere Explorer for Cactusphereには3つのペイン(表示領域)があります。左ペインにProductとDevice Groupsの一覧が表示され、右ペインにはDevice一覧が表示されます。各項目の上で右クリックをすることで、項目の作成や削除、デプロイ設定、デバイスグループの変更などを行う事ができます。
 
 <a href="../../Images/AzureSphereExplorer_MainWindow_001.png"><img src="../../Images/AzureSphereExplorer_MainWindow_001.png" width=100% style="display: block; margin: auto;"></a>
 
@@ -46,9 +46,9 @@ Azure Sphere には Azure Sphere アプリケーションを更新するため�
 
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
-### Azure Sphere Explorerからデプロイ設定を行う方法
+### Azure Sphere Explorer for Cactusphereからデプロイ設定を行う方法
 
-Azure Sphere Explorerの"Device Groups"ペインの一覧から、デプロイ設定を行うデバイスグループを選択し、右クリックします。("ExtractWindow"の"Device Groups"からも同じ事ができます。)
+Azure Sphere Explorer for Cactusphereの"Device Groups"ペインの一覧から、デプロイ設定を行うデバイスグループを選択し、右クリックします。("ExtractWindow"の"Device Groups"からも同じ事ができます。)
 
 <a href="../../Images/AzureSphereExplorer_Deploy_001.png"><img src="../../Images/AzureSphereExplorer_Deploy_001.png" width=100% style="display: block; margin: auto;"></a>
 
@@ -91,15 +91,15 @@ Azure Sphere Explorerの"Device Groups"ペインの一覧から、デプロイ�
 
 ### デバイスのクレーム (claim) 機能
 
-Azure Sphere テナントに接続できるようにするためには、Azure Sphere テナントにクレーム作業を行ってテナントにデバイスを紐付ける必要があります。Azure Sphere Explorerでは、一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを**変更することはできない**ため、注意して実施して下さい。
+Azure Sphere テナントに接続できるようにするためには、Azure Sphere テナントにクレーム作業を行ってテナントにデバイスを紐付ける必要があります。Azure Sphere Explorer for Cactusphereでは、一度、クレームして Azure Sphere テナントに紐付けられると、紐付けられた Azure Sphere テナントを**変更することはできない**ため、注意して実施して下さい。
 
 クレームについての詳細についてはソフトウェアマニュアルを参照してください。ソフトウェアマニュアルのダウンロードには、Armadilloサイトのユーザー登録とログインが必要になります。
 
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
-### Azure Sphere Explorerからデバイスのクレーム (claim) を行う方法
+### Azure Sphere Explorer for Cactusphereからデバイスのクレーム (claim) を行う方法
 
-Azure Sphere Explorerの"Device"タブから"Claim"を選択すると、"DeviceClaimWindow"が表示されます。
+Azure Sphere Explorer for Cactusphereの"Device"タブから"Claim"を選択すると、"DeviceClaimWindow"が表示されます。
 
 <a href="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png"><img src="../../Images/AzureSphereExplorer_DeviceClaimWindow_001.png" width=90% style="display: block; margin: auto;"></a>
 
@@ -126,9 +126,9 @@ Cactusphereはアップデート保留機能を有しています。この機能
 
 https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
-### Azure Sphere ExplorerからOTA保留機能を利用する方法
+### Azure Sphere Explorer for CactusphereからOTA保留機能を利用する方法
 
-Azure Sphere Explorerの"Devices"ペイン内のデバイスID一覧から任意のデバイスを選び、 **右クリック** します。一覧から"Update Properties"を選択します。
+Azure Sphere Explorer for Cactusphereの"Devices"ペイン内のデバイスID一覧から任意のデバイスを選び、 **右クリック** します。一覧から"Update Properties"を選択します。
 
 <a href="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png"><img src="../../Images/AzureSphereExplorer_UpdatePropertiesWindow_001.png" width=90% style="display: block; margin: auto;"></a>
 
