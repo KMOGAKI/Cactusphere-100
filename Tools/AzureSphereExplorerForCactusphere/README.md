@@ -19,7 +19,7 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 
 ## インストール方法
 
-1. [AzureSphereExplorerForCactusphere.zip](https://github.com/KMOGAKI/Cactusphere-100/raw/explorer_rc-1/Tools/AzureSphereExplorerForCactusphere/AzureSphereExplorerForCactusphere.zip)をダウンロードしてください。
+1. [AzureSphereExplorerForCactusphere.zip](https://github.com/KMOGAKI/Cactusphere-100/raw/explorer_rc-2/Tools/AzureSphereExplorerForCactusphere/AzureSphereExplorerForCactusphere.zip)をダウンロードしてください。
 1. 適当なフォルダに、`AzureSphereExplorerForCactusphere.zip`を解凍してください。
 1. 解凍した中にある、`AzureSphereExplorerForCactusphere.exe`を起動してください。
 
