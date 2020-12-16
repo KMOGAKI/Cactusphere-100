@@ -76,4 +76,4 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 
 ## ツール
 
-[Azure Sphere Explorer for Cactusphere](https://github.com/KMOGAKI/Cactusphere-100/tree/explorer_rc-1/Tools/AzureSphereExplorerForCactusphere)
+[Azure Sphere Explorer for Cactusphere](https://github.com/KMOGAKI/Cactusphere-100/tree/explorer_rc-2/Tools/AzureSphereExplorerForCactusphere)
