@@ -10,6 +10,10 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 - デバイスのクレーム (claim) 機能
 - SphereOS/アプリのOTA保留/時間指定実行
 
+## ライセンス
+
+[MIT](https://github.com/KMOGAKI/Cactusphere-100/raw/explorer_rc-4/Tools/AzureSphereExplorerForCactusphere/LICENSE.txt)
+
 ## 要件
 
 ### サポートしているプラットフォーム
