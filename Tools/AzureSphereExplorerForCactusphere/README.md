@@ -16,7 +16,7 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
     - [MIT](https://github.com/matsujirushi/AzureSphereExplorer/blob/master/LICENSE.txt)
 
  - 本ツール(Azure Sphere Explorer for Cactusphere)のライセンス
-    - [MIT](https://github.com/KMOGAKI/Cactusphere-100/raw/explorer_rc-4/Tools/AzureSphereExplorerForCactusphere/LICENSE.txt)
+    - [MIT](https://github.com/KMOGAKI/Cactusphere-100/blob/explorer_rc-4/Tools/AzureSphereExplorerForCactusphere/LICENSE.txt)
 
 ## 要件
 
