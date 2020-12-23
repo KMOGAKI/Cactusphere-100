@@ -46,6 +46,50 @@ Azure Sphere Explorer for Cactusphereには3つのペイン(表示領域)があ�
 
 また、デバイスグループ変更やクレームなどの機能では、デバイスIDが記載されたcsvファイルを読み込む事で一括設定する事も可能です。
 
+### Azure Sphere Explorer for Cactusphereからプロダクトの作成を行う方法
+
+Azure Sphere Explorer for Cactusphereの"Products"ペインの一覧で右クリックします。
+
+<a href="../../Images/AzureSphereExplorer_CreateProduct_001.png"><img src="../../Images/AzureSphereExplorer_CreateProduct_001.png" width=100% style="display: block; margin: auto;"></a>
+
+"Create New Product"を選択するとCreateProductWindowが表示されます。
+
+<a href="../../Images/AzureSphereExplorer_CreateProduct_002.png"><img src="../../Images/AzureSphereExplorer_CreateProduct_002.png" width=60% style="display: block; margin: auto;"></a>
+
+ * ① **プロダクト名の指定** ：作成するプロダクトの名前を指定する事ができます。
+
+ * ② **デフォルトグループの有効** ：プロダクトを作成する場合、テンプレート化されたデバイスグループが作成されます。デバイスグループの作成が不要な場合は"No"を指定します。★★
+
+ * ③ **説明文** ：作成するプロダクトに関しての説明文を記載する事が出来ます。空白の状態で作成する事も可能です。
+
+ * ④ **Createボタン** ：各設定を行った後、Createボタンを押下する事で、プロダクトを作成する事ができます。
+
+### Azure Sphere Explorer for Cactusphereからデバイスグループの作成を行う方法
+
+Azure Sphere Explorer for Cactusphereの"Device Groups"ペインの一覧で右クリックします。
+
+<a href="../../Images/AzureSphereExplorer_CreateDG_001.png"><img src="../../Images/AzureSphereExplorer_CreateDG_001.png" width=100% style="display: block; margin: auto;"></a>
+
+"Create New DeviceGroup"を選択するとCreateDeviceGroupWindowが表示されます。
+
+<a href="../../Images/AzureSphereExplorer_CreateDG_002.png"><img src="../../Images/AzureSphereExplorer_CreateDG_002.png" width=60% style="display: block; margin: auto;"></a>
+
+ * ① **デバイスグループ名の指定** ：作成するデバイスグループの名前を指定する事ができます。
+
+ * ② **プロダクトの指定** ：作成するデバイスグループが所属するプロダクトの名前を指定します。右にある"▼"を押下すると、現在作成されているプロダクト名の一覧が表示されます。
+
+ * ③ **説明文** ：作成するデバイスグループに関しての説明文を記載する事が出来ます。空白の状態で作成する事も可能です。
+
+ * ④ **フィードの指定** ：フィードの指定をする事ができます。右にある"▼"を押下すると、以下の2種類が表示されます。
+    * **Retail** ：安定版のシステムソフトウェアで、 機能リリース、品質リリースでフィードされます。
+    * **RetailEval** ：評価版のシステムソフトウェアで、Retail OS フィードの２週前にフィードされます。
+
+ * ⑤ **アップデートポリシーの設定** ：作成するデバイスグループのアップデートポリシーを指定する事ができます。これは、OSやファームウェアのアップデートを行う際に、どの範囲でアップデートするかを指定する値です。右にある"▼"を押下すると、以下の2種類が表示されます。
+    * **UpdateAll** ：OS/HLApp/RTApp/ボード構成パッケージを含む全てのファームウェアをアップデートします。
+    * **No3rdPartyAppUpdates** ：OSのみアップデートします。
+
+ * ⑥ **Createボタン** ：各設定を行った後、Createボタンを押下する事で、デバイスグループを作成する事ができます。
+
 ### デプロイ機能
 
 Azure Sphere には Azure Sphere アプリケーションを更新するためにデプロイという機能があり、OTA (Over The Air) やイーサネットなどネットワーク経由で Azure Sphere デバイスをまとめて更新することができます。
