@@ -58,7 +58,7 @@ Azure Sphere Explorer for Cactusphereの"Products"ペインの一覧で右クリ
 
  * ① **プロダクト名の指定** ：作成するプロダクトの名前を指定する事ができます。
 
- * ② **デフォルトグループの有効** ：プロダクトを作成する場合、テンプレート化されたデバイスグループが作成されます。デバイスグループの作成が不要な場合は"No"を指定します。★★
+ * ② **デフォルトグループの有効** ：プロダクトを作成する場合、テンプレート化されたデバイスグループが作成されます。デバイスグループの作成が不要な場合は"No"を指定します。★
 
  * ③ **説明文** ：作成するプロダクトに関しての説明文を記載する事が出来ます。空白の状態で作成する事も可能です。
 
@@ -89,6 +89,33 @@ Azure Sphere Explorer for Cactusphereの"Device Groups"ペインの一覧で右�
     * **No3rdPartyAppUpdates** ：OSのみアップデートします。
 
  * ⑥ **Createボタン** ：各設定を行った後、Createボタンを押下する事で、デバイスグループを作成する事ができます。
+
+### Azure Sphere Explorer for Cactusphereからデバイスグループの変更を行う方法
+
+Azure Sphere Explorer for Cactusphereの"Devices"ペインの一覧で、デバイスグループを変更したいデバイスを選択し、右クリックします。
+
+<a href="../../Images/AzureSphereExplorer_ChangeDG_001.png"><img src="../../Images/AzureSphereExplorer_ChangeDG_001.png" width=100% style="display: block; margin: auto;"></a>
+
+"Change DeviceGroup"を選択するとChangeDeviceGroupWindowが表示されます。
+
+<a href="../../Images/AzureSphereExplorer_ChangeDG_002.png"><img src="../../Images/AzureSphereExplorer_ChangeDG_002.png" width=60% style="display: block; margin: auto;"></a>
+
+ * ① **変更先のデバイスグループの指定** ：変更先のデバイスグループを指定します。右にある"▼"を押下すると、変更先のデバイスグループが[プロダクト名/デバイスグループ名]の形式で一覧表示されます。
+
+ * ② **プロダクトの指定** ：変更元のデバイスを指定します。デフォルトでは、ChangeDeviceGroupWindowを表示した際に選択したデバイスにチェックが入っています。デバイス一覧の左にある"□"にチェックを入れる事で、複数のデバイスを一度に一つのデバイスグループへ変更することも可能です。
+
+ * ③ **CSVファイル読み込みボタン** ：CSVファイルに記載されたデバイスIDを読み込む事で、複数のデバイスを選択する事ができます。★
+    * ※CSVファイルは、デバイスID毎に改行を入れて作成して下さい。
+
+ * ④ **デバイスグループ変更ボタン** ：各設定を行った後、Changeボタンを押下する事で、デバイスグループを変更する事ができます。
+
+### Azure Sphere Explorer for Cactusphereからプロダクトおよびデバイスグループを削除する方法
+
+Azure Sphere Explorer for Cactusphereの"Products"ペインまたは、"Device Groups"ペインの一覧で、削除したい項目を選択し、右クリックします。
+
+<a href="../../Images/AzureSphereExplorer_Delete_001.png"><img src="../../Images/AzureSphereExplorer_Delete_001.png" width=100% style="display: block; margin: auto;"></a>
+
+"Delete"を選択すると確認ウィンドウが表示されるため、"OK"ボタンを押下する事でプロダクトおよびデバイスグループを削除する事ができます。
 
 ### デプロイ機能
 
