@@ -3,7 +3,7 @@
 
 Azure Sphereのデバイスやプロダクト、デバイスグループなどをすばやく簡単に見ることができるツールとして、Azure Sphere Explorerがあります。Azure Sphere Explorerの詳細情報は[こちら](https://github.com/matsujirushi/AzureSphereExplorer)を参照してください。
 
-アットマークテクノでは、Azure Sphere Explorerをベースにして、以下の機能を追加したAzure Sphere Explorer for Cactusphereの実行ファイルを提供します。
+アットマークテクノでは、Azure Sphere Explorerをベースにして、以下のCactusphere向けに機能を追加したAzure Sphere Explorer for Cactusphereの実行ファイルを提供します。
 
 ## 追記機能一覧
 
@@ -30,6 +30,34 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 1. [AzureSphereExplorerForCactusphere.zip](https://github.com/Cactusphere/Cactusphere-100/raw/dev/Tools/AzureSphereExplorerForCactusphere/AzureSphereExplorerForCactusphere.zip)をダウンロードしてください。
 1. 適当なフォルダに、`AzureSphereExplorerForCactusphere.zip`を解凍してください。
 1. 解凍した中にある、`AzureSphereExplorerForCactusphere.exe`を起動してください。
+
+## Azure Sphere Explorer for Cactusphereについて
+Cactusphereを用いて構築したシステムでは、IoT centralで収集したデータの管理、Azure Sphere Security Service(以下AS3)でデバイスの管
+理を行うこととなります。デバイスの管理は、Azure Sphere SDKのazsphereコマンドを用いて個別に設定しますが、デバイス管理ツールである
+"Azure Sphere Explorer for Cactusphere"を用いる事で、デバイスの登録や個体管理、アップデート管理、ソフトウェアの管理を一括して行う事
+ができます。また、デバイスの一覧を階層表示させる事もできるため、より直感的なデバイス管理を実現することが可能です。
+<a href="../../Images/AzureSphereExplorerForCactusphere_Figure_001.png"><img src="../../Images/AzureSphereExplorerForCactusphere_Figure_001.png" width=100% style="display: block; margin: auto;"></a>
+
+## システム全体の構成
+
+<a href="../../Images/AzureSphereExplorerForCactusphere_Figure_002.png"><img src="../../Images/AzureSphereExplorerForCactusphere_Figure_002.png" width=100% style="display: block; margin: auto;"></a>
+
+## Azure Sphere Explorer for Cactusphere のデバイス管理機能
+### 1.Cactusphereの登録：
+Azure Sphere テナントに、デバイスのクレーム(Cactusphereの登録)を行う事ができます。
+
+### 2.プロダクト/デバイスグループの管理：
+プロダクト/デバイスグループの作成や削除、テナントに登録されているデバイスのデバイスグループを変更する事が可能です。デバイスグループ毎にOSフィードの設定やアップデートポリシーの設定を行う事ができます。
+
+### 3.デバイス一覧表示：
+管理画面で各デバイスグループのデバイス一覧を表示させる事ができます。また、プロダクト/デバイスグループ/デバイスIDの順で階層表示させることで、より直感的にデバイスを操作・管理する事ができます。
+
+### 4.Firmwareの管理：
+管理画面上からデプロイ機能を用いて、FirmwareをAS3上へアップロードする事ができます。
+※Azure Sphere OSについてはMicrosoftがAS3上にアップロードするため、ユーザーによるデプロイ設定は不要です。
+
+### 5.アップデート開始時間の管理：
+Cactusphereのアップデート保留機能を用いて、Azure Sphere OSアップデートとFirmwareアップデートの開始時間を設定する事ができます。
 
 
 ## 基本機能について
