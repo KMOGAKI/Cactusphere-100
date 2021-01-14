@@ -62,7 +62,9 @@ Azure Sphere Explorer for Cactusphereの"Products"ペインの一覧で右クリ
 
  * ③ **説明文** ：作成するプロダクトに関しての説明文を記載する事ができます。空白の状態で作成する事も可能です。
 
- * ④ **Createボタン** ：各設定を行った後、Createボタンを押下する事で、プロダクトを作成する事ができます。
+ * ④ **Createボタン** ：各設定を行った後、Createボタンを押下する事で、プロダクトを作成する事ができます。プロダクトの作成が成功すると、"Create Product is success."と記載されたウィンドウが表示されるため"OK"を押下します。
+
+ * ⑤ **Closeボタン** ：Closeボタンを押下してウィンドウを閉じます。
 
 ### Azure Sphere Explorer for Cactusphereからデバイスグループの作成を行う方法
 
@@ -88,7 +90,9 @@ Azure Sphere Explorer for Cactusphereの"Device Groups"ペインの一覧で右�
     * **UpdateAll** ：OS/HLApp/RTApp/ボード構成パッケージを含む全てのファームウェアをアップデートします。
     * **No3rdPartyAppUpdates** ：OSのみアップデートします。
 
- * ⑥ **Createボタン** ：各設定を行った後、Createボタンを押下する事で、デバイスグループを作成する事ができます。
+ * ⑥ **Createボタン** ：各設定を行った後、Createボタンを押下する事で、デバイスグループを作成する事ができます。デバイスグループの作成が成功すると、"Create DeviceGroup is success."と記載されたウィンドウが表示されるため"OK"を押下します。
+
+ * ⑦ **Closeボタン** ：Closeボタンを押下してウィンドウを閉じます。
 
 ### Azure Sphere Explorer for Cactusphereからデバイスグループの変更を行う方法
 
@@ -102,20 +106,30 @@ Azure Sphere Explorer for Cactusphereの"Devices"ペインの一覧で、デバ�
 
  * ① **変更先のデバイスグループの指定** ：変更先のデバイスグループを指定します。右にある"▼"を押下すると、変更先のデバイスグループが[プロダクト名/デバイスグループ名]の形式で一覧表示されます。
 
- * ② **プロダクトの指定** ：変更元のデバイスを指定します。デフォルトでは、ChangeDeviceGroupWindowを表示した際に選択したデバイスにチェックが入っています。デバイス一覧の左にある"□"にチェックを入れる事で、複数のデバイスを一度に一つのデバイスグループへ変更する事も可能です。
+ * ② **デバイスの指定** ：変更元のデバイスを指定します。デフォルトでは、ChangeDeviceGroupWindowを表示した際に選択したデバイスにチェックが入っています。デバイス一覧の左にある"□"にチェックを入れる事で、複数のデバイスを一度に一つのデバイスグループへ変更する事も可能です。
 
  * ③ **CSVファイル読み込みボタン** ：CSVファイルに記載されたデバイスIDを読み込む事で、複数のデバイスを選択する事ができます。
     * ※CSVファイルは、デバイスID毎に改行を入れて作成して下さい。
 
- * ④ **デバイスグループ変更ボタン** ：各設定を行った後、Changeボタンを押下する事で、デバイスグループを変更する事ができます。
+ * ④ **デバイスグループ変更ボタン** ：各設定を行った後、Changeボタンを押下する事で、デバイスグループを変更する事ができます。デバイスグループの変更が成功すると、②で選択したデバイスの"Device Groups"の値が変更されます。
 
-### Azure Sphere Explorer for Cactusphereからプロダクトおよびデバイスグループを削除する方法
+ * ⑤ **Closeボタン** ：Closeボタンを押下してウィンドウを閉じます。
 
-Azure Sphere Explorer for Cactusphereの"Products"ペインまたは、"Device Groups"ペインの一覧で、削除したい項目を選択し、右クリックします。
+### Azure Sphere Explorer for Cactusphereからプロダクトを削除する方法
 
-<a href="../../Images/AzureSphereExplorer_Delete_001.png"><img src="../../Images/AzureSphereExplorer_Delete_001.png" width=100% style="display: block; margin: auto;"></a>
+Azure Sphere Explorer for Cactusphereの"Products"ペインの一覧で、削除したい項目を選択し、右クリックします。
 
-"Delete"を選択すると確認ウィンドウが表示されるため、"OK"ボタンを押下する事でプロダクトおよびデバイスグループを削除する事ができます。
+<a href="../../Images/AzureSphereExplorer_DeletePrd_001.png"><img src="../../Images/AzureSphereExplorer_DeletePrd_001.png" width=100% style="display: block; margin: auto;"></a>
+
+"Delete"を選択すると確認ウィンドウが表示されるため、"OK"ボタンを押下する事でプロダクトを削除する事ができます。プロダクトの削除が成功すると、"Product delete is success."と記載されたウィンドウが表示されるため"OK"を押下します。
+
+### Azure Sphere Explorer for Cactusphereからデバイスグループを削除する方法
+
+Azure Sphere Explorer for Cactusphereの"Device Groups"ペインの一覧で、削除したい項目を選択し、右クリックします。
+
+<a href="../../Images/AzureSphereExplorer_DeleteDG_001.png"><img src="../../Images/AzureSphereExplorer_DeleteDG_001.png" width=100% style="display: block; margin: auto;"></a>
+
+"Delete"を選択すると確認ウィンドウが表示されるため、"OK"ボタンを押下する事でデバイスグループを削除する事ができます。デバイスグループの削除が成功すると、"DeviceGroup delete is success."と記載されたウィンドウが表示されるため"OK"を押下します。
 
 ### デプロイ機能
 
@@ -162,7 +176,7 @@ Azure Sphere Explorer for Cactusphereの"Device Groups"ペインの一覧から�
 
 <a href="../../Images/AzureSphereExplorer_Deploy_006.png"><img src="../../Images/AzureSphereExplorer_Deploy_006.png" width=60% style="display: block; margin: auto;"></a>
 
-問題が無ければ"Close"を押下してウィンドウを閉じます。
+問題が無ければCloseボタンを押下してウィンドウを閉じます。
 
 これでデプロイ設定は完了です。
 
