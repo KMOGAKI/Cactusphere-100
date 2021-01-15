@@ -16,7 +16,7 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
     - [MIT](https://github.com/matsujirushi/AzureSphereExplorer/blob/master/LICENSE.txt)
 
  - 本ツール(Azure Sphere Explorer for Cactusphere)のライセンス
-    - [MIT](https://github.com/Cactusphere/Cactusphere-100/blob/dev/Tools/AzureSphereExplorerForCactusphere/LICENSE.txt)
+    - [MIT](https://github.com/Cactusphere/Cactusphere-100/blob/master/Tools/AzureSphereExplorerForCactusphere/LICENSE.txt)
 
 ## 要件
 
@@ -27,7 +27,7 @@ Azure Sphereのデバイスやプロダクト、デバイスグループなど�
 
 ## インストール方法
 
-1. [AzureSphereExplorerForCactusphere.zip](https://github.com/Cactusphere/Cactusphere-100/raw/dev/Tools/AzureSphereExplorerForCactusphere/AzureSphereExplorerForCactusphere.zip)をダウンロードしてください。
+1. [AzureSphereExplorerForCactusphere.zip](https://github.com/Cactusphere/Cactusphere-100/raw/master/Tools/AzureSphereExplorerForCactusphere/AzureSphereExplorerForCactusphere.zip)をダウンロードしてください。
 1. 適当なフォルダに、`AzureSphereExplorerForCactusphere.zip`を解凍してください。
 1. 解凍した中にある、`AzureSphereExplorerForCactusphere.exe`を起動してください。
 
