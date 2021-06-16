@@ -41,7 +41,7 @@ if(PRODUCT STREQUAL "atmarktechno_DI_model")
     )
     file(GLOB DI_SRC DI/*.c)
     set(SRC_LIST main.c ${DRIVERS_SRC} ${COMMON_SRC} ${DI_SRC})
-    set(APP_VERSION "21.01-v1.0.0")
+    set(APP_VERSION "21.01-v2.0.0")
 endif()
 
 if(PRODUCT STREQUAL "atmarktechno_RS485_model")
@@ -51,6 +51,16 @@ if(PRODUCT STREQUAL "atmarktechno_RS485_model")
     )
     file(GLOB RS485_SRC RS485/*.c)
     set(SRC_LIST main.c ${DRIVERS_SRC} ${COMMON_SRC} ${RS485_SRC})
+    set(APP_VERSION "21.01-v1.0.1")
+endif()
+
+if(PRODUCT STREQUAL "atmarktechno_DIO_model")
+    add_compile_definitions(APP_PRODUCT_ID=0x06)
+    set(INCLUDE_DIR ${PROJECT_SOURCE_DIR} ${PROJECT_BINARY_DIR} ${PROJECT_SOURCE_DIR}/drivers
+                    ${PROJECT_SOURCE_DIR}/common ${PROJECT_SOURCE_DIR}/DIO
+    )
+    file(GLOB DIO_SRC DIO/*.c)
+    set(SRC_LIST main.c ${DRIVERS_SRC} ${COMMON_SRC} ${DIO_SRC})
     set(APP_VERSION "21.01-v1.0.0")
 endif()
 

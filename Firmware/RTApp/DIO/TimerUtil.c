@@ -22,34 +22,40 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#include "TimerUtil.h"
 
-#ifndef _STDBOOL_H
-#include <stdbool.h>
-#endif
+#include "mt3620-timer.h"
 
-#define PROPERTY_NAME_MAX_LEN	32
+static uint32_t	sTickCount = 0;
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+static void
+TimerCallback()
+{
+    sTickCount += 10;  // 10[ms/intr]
+    Gpt_LaunchTimerMs(TimerGpt0, 10, TimerCallback);
+}
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+// Initialization
+bool
+TimerUtil_Initialize()
+{
+    // interrupt setting at 10 [ms] cycle
+    Gpt_Init();
+    Gpt_LaunchTimerMs(TimerGpt0, 10, TimerCallback);
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
+    return true;
+}
 
-#endif  // _PROPERTYITEMS_H_
+// Sleep
+void
+TimerUtil_SleepUntilIntr()
+{
+    __asm__("wfi");
+}
+
+// tick count (count/msec)
+uint32_t
+TimerUtil_GetTickCount()
+{
+    return sTickCount;
+}

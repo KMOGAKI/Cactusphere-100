@@ -22,34 +22,25 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_DIWATCHITEM_H_
+#define _DIO_DIWATCHITEM_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
+#ifndef _STDIDONT_H
+#include <stdint.h>
+#endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#ifndef TELEMETRY_NAME_MAX_LEN
+#define TELEMETRY_NAME_MAX_LEN	32
+#endif
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+typedef struct DIO_DIWatchItem {
+    char        telemetryName[TELEMETRY_NAME_MAX_LEN + 1];  // telemetry name
+    uint32_t    pinID;                  // pin ID
+    bool        notifyChangeForHigh;   // whether the input's normal level isn't high
+    bool        isCountClear;          // whether to clear the counter
+} DIO_DIWatchItem;
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
-
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
-
-#endif  // _PROPERTYITEMS_H_
+#endif  // _DIO_DIWATCHITEM_H_

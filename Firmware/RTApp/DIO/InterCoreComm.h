@@ -22,34 +22,29 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _INTER_CORE_COMM_H_
+#define _INTER_CORE_COMM_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
+#ifndef _STDINT_H
+#include <stdint.h>
+#endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#ifndef _DIO_DRIVER_MSG_H_
+#include "DIODriveMsg.h"
+#endif
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+// Initialization
+extern bool	InterCoreComm_Initialize();
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+// Wait and receive request from HLApp
+extern const DIO_DriverMsg*	InterCoreComm_WaitAndRecvRequest();
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
 
-#endif  // _PROPERTYITEMS_H_
+// Send response data to HLApp
+extern bool	InterCoreComm_SendReadData(const uint8_t* data, uint16_t len);
+extern bool	InterCoreComm_SendIntValue(int val);
+
+#endif  // _INTER_CORE_COMM_H_

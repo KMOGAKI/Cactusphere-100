@@ -22,34 +22,46 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_DIWATCH_CONFIG_H_
+#define _DIO_DIWATCH_CONFIG_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#ifndef CONTAINERS_VECTOR_H
+#include <vector.h>
+#endif
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+#include "DIO_PropertyItem.h"
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+typedef struct DIO_DIWatchConfig	DIO_DIWatchConfig;
+typedef struct _json_value	json_value;
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
+#ifndef NUM_DI
+#define NUM_DI 2
+#endif
 
-#endif  // _PROPERTYITEMS_H_
+#ifndef NUM_DO
+#define NUM_DO 2
+#endif
+
+#ifndef NUM_DIO
+#define NUM_DIO (NUM_DI + NUM_DO)
+#endif
+
+// Initialization and cleanup
+extern DIO_DIWatchConfig*	DIO_DIWatchConfig_New(void);
+extern void	DIO_DIWatchConfig_Destroy(DIO_DIWatchConfig* me);
+
+// Load DIO contact input watcher configuration from JSON
+extern bool	DIO_DIWatchConfig_LoadFromJSON(DIO_DIWatchConfig* me, DIO_PropertyData* data,
+    const json_value* json, vector propertyItem, const char* version);
+
+// Get configuration of DIO contact input watchers
+extern vector	DIO_DIWatchConfig_GetFetchItems(DIO_DIWatchConfig* me);
+
+// Get enable port number of DIO contact input
+int DIO_DIWatchConfig_GetWatchEnablePorts(DIO_DIWatchConfig* me, bool* status);
+
+#endif  // _DIO_DIWATCH_CONFIG_H_

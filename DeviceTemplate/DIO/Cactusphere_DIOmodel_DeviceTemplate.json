@@ -1,0 +1,1024 @@
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel;1",
+    "@type": "Interface",
+    "displayName": "DIOModel",
+    "contents": [
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI1;1",
+        "@type": "Property",
+        "displayName": "DI1 FunctionType",
+        "name": "FunctionType_DI1",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI1:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI1:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI1:schema:PulseCounter;1",
+              "displayName": "01 : PulseCounter",
+              "enumValue": 1,
+              "name": "PulseCounter"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI1:schema:Edge;1",
+              "displayName": "02 : Edge",
+              "enumValue": 2,
+              "name": "Edge"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI1:schema:Polling;1",
+              "displayName": "03 : Polling",
+              "enumValue": 3,
+              "name": "Polling"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:Interval_DI1;1",
+        "@type": "Property",
+        "displayName": "DI1 Interval",
+        "name": "Interval_DI1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTrigger_DI1;1",
+        "@type": "Property",
+        "displayName": "DI1 EdgeTriggerIsHigh",
+        "name": "EdgeTrigger_DI1",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:MinPulseWidth_DI1;1",
+        "@type": "Property",
+        "displayName": "DI1 minPulseWidth",
+        "name": "MinPulseWidth_DI1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:MaxPulseCount_DI1;1",
+        "@type": "Property",
+        "displayName": "DI1 maxPulseCount",
+        "name": "MaxPulseCount_DI1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:PollIsActiveHigh_DI1;1",
+        "@type": "Property",
+        "displayName": "DI1 PollingIsActiveHigh",
+        "name": "PollIsActiveHigh_DI1",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 FunctionType",
+        "name": "FunctionType_DO1",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO1:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO1:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO1:schema:Single;1",
+              "displayName": "01 : Single",
+              "enumValue": 1,
+              "name": "Single"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO1:schema:Relation;1",
+              "displayName": "02 : Relation",
+              "enumValue": 2,
+              "name": "Relation"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:IsNotify_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 IsNotify",
+        "name": "IsNotify_DO1",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 FunctionType(Single)",
+        "name": "SingleFunctionType_DO1",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO1:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO1:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO1:schema:OneShot;1",
+              "displayName": "01 : OneShot",
+              "enumValue": 1,
+              "name": "OneShot"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO1:schema:PulsePWM;1",
+              "displayName": "02 : Pulse/PWM",
+              "enumValue": 2,
+              "name": "PulsePWM"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 RelationDIPort",
+        "name": "RelationPort_DO1",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO1:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO1:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO1:schema:DI1;1",
+              "displayName": "01 : DI1",
+              "enumValue": 1,
+              "name": "DI1"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO1:schema:DI2;1",
+              "displayName": "02 : DI2",
+              "enumValue": 2,
+              "name": "DI2"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 FunctionType(Relation)",
+        "name": "RelationFunctionType_DO1",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1:schema:OneShot;1",
+              "displayName": "01 : OneShot",
+              "enumValue": 1,
+              "name": "OneShot"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1:schema:Interlock;1",
+              "displayName": "02 : Interlock",
+              "enumValue": 2,
+              "name": "Interlock"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1:schema:Invert;1",
+              "displayName": "03 : Invert",
+              "enumValue": 3,
+              "name": "Invert"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1:schema:Generate;1",
+              "displayName": "04 : Generate",
+              "enumValue": 4,
+              "name": "Generate"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO1:schema:PulsePWM;1",
+              "displayName": "05 : Pulse/PWM",
+              "enumValue": 5,
+              "name": "PulsePWM"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 EdgeTriggerType",
+        "name": "EdgeTriggerType_DO1",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO1:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO1:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO1:schema:Rising;1",
+              "displayName": "01 : Rising",
+              "enumValue": 1,
+              "name": "Rising"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO1:schema:Falling;1",
+              "displayName": "02 : Falling",
+              "enumValue": 2,
+              "name": "Falling"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO1:schema:Both;1",
+              "displayName": "03 : Both(Generate only)",
+              "enumValue": 3,
+              "name": "Both"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:StartOutputCount_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 StartOutputCount",
+        "name": "StartOutputCount_DO1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:StopOutputCount_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 StopOutputCount",
+        "name": "StopOutputCount_DO1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:InputChatteringTime_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 InputChatteringTime",
+        "name": "InputChatteringTime_DO1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputStatus_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 OutputStatusIsHigh",
+        "name": "OutputStatus_DO1",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputTime_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 OutputTime",
+        "name": "OutputTime_DO1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputDelayTime_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 OutputDelayTime",
+        "name": "OutputDelayTime_DO1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputPulseCycle_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 OutputPulseCycle",
+        "name": "OutputPulseCycle_DO1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputPulseDutyCycle_DO1;1",
+        "@type": "Property",
+        "displayName": "DO1 OutputPulseDutyCycle",
+        "name": "OutputPulseDutyCycle_DO1",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:ClearCounter_DI1;1",
+        "@type": "Command",
+        "commandType": "synchronous",
+        "displayName": "DI1 ClearCounter",
+        "name": "ClearCounter_DI1",
+        "request": {
+          "@type": "CommandPayload",
+          "displayName": "init value",
+          "name": "initValue",
+          "schema": "integer"
+        },
+        "response": {
+          "@type": "CommandPayload",
+          "displayName": "initResult",
+          "name": "initResult",
+          "schema": "string"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:Start_DO1;1",
+        "@type": "Command",
+        "commandType": "synchronous",
+        "displayName": "DO1 Start",
+        "name": "Start_DO1",
+        "response": {
+          "@type": "CommandPayload",
+          "displayName": "result",
+          "name": "result",
+          "schema": "string"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:Stop_DO1;1",
+        "@type": "Command",
+        "commandType": "synchronous",
+        "displayName": "DO1 Stop",
+        "name": "Stop_DO1",
+        "response": {
+          "@type": "CommandPayload",
+          "displayName": "result",
+          "name": "result",
+          "schema": "string"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI1_count;1",
+        "@type": "Telemetry",
+        "displayName": "DI1 PulseCount",
+        "name": "DI1_count",
+        "schema": "integer"
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI1_EdgeEvent;1",
+        "@type": ["Telemetry", "Event"],
+        "displayName": "DI1 EdgeEvent",
+        "name": "DI1_EdgeEvent",
+        "schema": "integer"
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI1_PollingStatus;1",
+        "@type": ["Telemetry", "State"],
+        "displayName": "DI1 PollingStatus",
+        "name": "DI1_PollingStatus",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI1_PollingStatus:schema;1",
+          "@type": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI1_PollingStatus:schema:ON;1",
+              "displayName": "ON",
+              "enumValue": 1,
+              "name": "ON"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI1_PollingStatus:schema:OFF;1",
+              "displayName": "OFF",
+              "enumValue": 0,
+              "name": "OFF"
+            }
+          ],
+          "valueSchema": "integer"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO1_Status;1",
+        "@type": ["Telemetry", "State"],
+        "displayName": "DO1 Status",
+        "name": "DO1_Status",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO1_Status:schema;1",
+          "@type": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO1_Status:schema:ON;1",
+              "displayName": "ON",
+              "enumValue": 1,
+              "name": "ON"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO1_Status:schema:OFF;1",
+              "displayName": "OFF",
+              "enumValue": 0,
+              "name": "OFF"
+            }
+          ],
+          "valueSchema": "integer"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI2;1",
+        "@type": "Property",
+        "displayName": "DI2 FunctionType",
+        "name": "FunctionType_DI2",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI2:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI2:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI2:schema:PulseCounter;1",
+              "displayName": "01 : PulseCounter",
+              "enumValue": 1,
+              "name": "PulseCounter"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI2:schema:Edge;1",
+              "displayName": "02 : Edge",
+              "enumValue": 2,
+              "name": "Edge"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DI2:schema:Polling;1",
+              "displayName": "03 : Polling",
+              "enumValue": 3,
+              "name": "Polling"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:Interval_DI2;1",
+        "@type": "Property",
+        "displayName": "DI2 Interval",
+        "name": "Interval_DI2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTrigger_DI2;1",
+        "@type": "Property",
+        "displayName": "DI2 EdgeTriggerIsHigh",
+        "name": "EdgeTrigger_DI2",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:MinPulseWidth_DI2;1",
+        "@type": "Property",
+        "displayName": "DI2 minPulseWidth",
+        "name": "MinPulseWidth_DI2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:MaxPulseCount_DI2;1",
+        "@type": "Property",
+        "displayName": "DI2 maxPulseCount",
+        "name": "MaxPulseCount_DI2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:PollIsActiveHigh_DI2;1",
+        "@type": "Property",
+        "displayName": "DI2 PollingIsActiveHigh",
+        "name": "PollIsActiveHigh_DI2",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 FunctionType",
+        "name": "FunctionType_DO2",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO2:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO2:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO2:schema:Single;1",
+              "displayName": "01 : Single",
+              "enumValue": 1,
+              "name": "Single"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:FunctionType_DO2:schema:Relation;1",
+              "displayName": "02 : Relation",
+              "enumValue": 2,
+              "name": "Relation"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:IsNotify_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 IsNotify",
+        "name": "IsNotify_DO2",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 FunctionType(Single)",
+        "name": "SingleFunctionType_DO2",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO2:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO2:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO2:schema:OneShot;1",
+              "displayName": "01 : OneShot",
+              "enumValue": 1,
+              "name": "OneShot"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:SingleFunctionType_DO2:schema:PulsePWM;1",
+              "displayName": "02 : Pulse/PWM",
+              "enumValue": 2,
+              "name": "PulsePWM"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 RelationDIPort",
+        "name": "RelationPort_DO2",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO2:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO2:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO2:schema:DI1;1",
+              "displayName": "01 : DI1",
+              "enumValue": 1,
+              "name": "DI1"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationPort_DO2:schema:DI2;1",
+              "displayName": "02 : DI2",
+              "enumValue": 2,
+              "name": "DI2"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 FunctionType(Relation)",
+        "name": "RelationFunctionType_DO2",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2:schema:OneShot;1",
+              "displayName": "01 : OneShot",
+              "enumValue": 1,
+              "name": "OneShot"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2:schema:Interlock;1",
+              "displayName": "02 : Interlock",
+              "enumValue": 2,
+              "name": "Interlock"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2:schema:Invert;1",
+              "displayName": "03 : Invert",
+              "enumValue": 3,
+              "name": "Invert"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2:schema:Generate;1",
+              "displayName": "04 : Generate",
+              "enumValue": 4,
+              "name": "Generate"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:RelationFunctionType_DO2:schema:PulsePWM;1",
+              "displayName": "05 : Pulse/PWM",
+              "enumValue": 5,
+              "name": "PulsePWM"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 EdgeTriggerType",
+        "name": "EdgeTriggerType_DO2",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO2:schema;1",
+          "@type": "Enum",
+          "displayName": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO2:schema:NotSelected;1",
+              "displayName": "00 : NotSelected",
+              "enumValue": 0,
+              "name": "NotSelected"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO2:schema:Rising;1",
+              "displayName": "01 : Rising",
+              "enumValue": 1,
+              "name": "Rising"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO2:schema:Falling;1",
+              "displayName": "02 : Falling",
+              "enumValue": 2,
+              "name": "Falling"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:EdgeTriggerType_DO2:schema:Both;1",
+              "displayName": "03 : Both(Generate only)",
+              "enumValue": 3,
+              "name": "Both"
+            }
+          ],
+          "valueSchema": "integer"
+        },
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:StartOutputCount_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 StartOutputCount",
+        "name": "StartOutputCount_DO2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:StopOutputCount_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 StopOutputCount",
+        "name": "StopOutputCount_DO2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:InputChatteringTime_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 InputChatteringTime",
+        "name": "InputChatteringTime_DO2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputStatus_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 OutputStatusIsHigh",
+        "name": "OutputStatus_DO2",
+        "schema": "boolean",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputTime_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 OutputTime",
+        "name": "OutputTime_DO2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputDelayTime_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 OutputDelayTime",
+        "name": "OutputDelayTime_DO2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputPulseCycle_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 OutputPulseCycle",
+        "name": "OutputPulseCycle_DO2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:OutputPulseDutyCycle_DO2;1",
+        "@type": "Property",
+        "displayName": "DO2 OutputPulseDutyCycle",
+        "name": "OutputPulseDutyCycle_DO2",
+        "schema": "integer",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:ClearCounter_DI2;1",
+        "@type": "Command",
+        "commandType": "synchronous",
+        "displayName": "DI2 ClearCounter",
+        "name": "ClearCounter_DI2",
+        "request": {
+          "@type": "CommandPayload",
+          "displayName": "init value",
+          "name": "initValue",
+          "schema": "integer"
+        },
+        "response": {
+          "@type": "CommandPayload",
+          "displayName": "initResult",
+          "name": "initResult",
+          "schema": "string"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:Start_DO2;1",
+        "@type": "Command",
+        "commandType": "synchronous",
+        "displayName": "DO2 Start",
+        "name": "Start_DO2",
+        "response": {
+          "@type": "CommandPayload",
+          "displayName": "result",
+          "name": "result",
+          "schema": "string"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:Stop_DO2;1",
+        "@type": "Command",
+        "commandType": "synchronous",
+        "displayName": "DO2 Stop",
+        "name": "Stop_DO2",
+        "response": {
+          "@type": "CommandPayload",
+          "displayName": "result",
+          "name": "result",
+          "schema": "string"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI2_count;1",
+        "@type": "Telemetry",
+        "displayName": "DI2 PulseCount",
+        "name": "DI2_count",
+        "schema": "integer"
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI2_EdgeEvent;1",
+        "@type": ["Telemetry", "Event"],
+        "displayName": "DI2 EdgeEvent",
+        "name": "DI2_EdgeEvent",
+        "schema": "integer"
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI2_PollingStatus;1",
+        "@type": ["Telemetry", "State"],
+        "displayName": "DI2 PollingStatus",
+        "name": "DI2_PollingStatus",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI2_PollingStatus:schema;1",
+          "@type": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI2_PollingStatus:schema:ON;1",
+              "displayName": "ON",
+              "enumValue": 1,
+              "name": "ON"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DI2_PollingStatus:schema:OFF;1",
+              "displayName": "OFF",
+              "enumValue": 0,
+              "name": "OFF"
+            }
+          ],
+          "valueSchema": "integer"
+        }
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO2_Status;1",
+        "@type": ["Telemetry", "State"],
+        "displayName": "DO2 Status",
+        "name": "DO2_Status",
+        "schema": {
+          "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO2_Status:schema;1",
+          "@type": "Enum",
+          "enumValues": [
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO2_Status:schema:ON;1",
+              "displayName": "ON",
+              "enumValue": 1,
+              "name": "ON"
+            },
+            {
+              "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DIOModel:DO2_Status:schema:OFF;1",
+              "displayName": "OFF",
+              "enumValue": 0,
+              "name": "OFF"
+            }
+          ],
+          "valueSchema": "integer"
+        }
+      }
+    ],
+    "extends": [
+      "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation;1",
+      "dtmi:Cactusphere_DIOModel_v1_0_0:UpdateInformation;1"
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:SerialNumber;1",
+        "@type": "Property",
+        "displayName": "Serial Number",
+        "name": "SerialNumber",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:EthMacAddr;1",
+        "@type": "Property",
+        "displayName": "Ethernet MAC Address",
+        "name": "EthMacAddr",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:ProductId;1",
+        "@type": "Property",
+        "displayName": "Product ID",
+        "name": "ProductId",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:VendorId;1",
+        "@type": "Property",
+        "displayName": "Vendor ID",
+        "name": "VendorId",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:WlanMacAddr;1",
+        "@type": "Property",
+        "displayName": "Wireless LAN MAC Address",
+        "name": "WlanMacAddr",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:Generation;1",
+        "@type": "Property",
+        "displayName": "Generation",
+        "name": "Generation",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:HLAppVersion;1",
+        "@type": "Property",
+        "displayName": "HLApp Version",
+        "name": "HLAppVersion",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:RTAppVersion;1",
+        "@type": "Property",
+        "displayName": "RTApp Version",
+        "name": "RTAppVersion",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:DeviceInformation:SphereWarning;1",
+        "@type": ["Telemetry", "Event"],
+        "displayName": "Error information",
+        "name": "SphereWarning",
+        "schema": "string",
+        "writable": false
+      }
+    ],
+    "displayName": "Device Information"
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:UpdateInformation;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:UpdateInformation:OSUpdateTime;1",
+        "@type": "Property",
+        "displayName": "OS Update time",
+        "name": "OSUpdateTime",
+        "schema": "string",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:UpdateInformation:FWUpdateTime;1",
+        "@type": "Property",
+        "displayName": "FW Update time",
+        "name": "FWUpdateTime",
+        "schema": "string",
+        "writable": true
+      },
+      {
+        "@id": "dtmi:Cactusphere_DIOModel_v1_0_0:UpdateInformation:UpdateInformation;1",
+        "@type": ["Telemetry", "Event"],
+        "displayName": "Update information",
+        "name": "UpdateInformation",
+        "schema": "string",
+        "writable": false
+      }
+    ],
+    "displayName": "Update Information"
+  }
+]

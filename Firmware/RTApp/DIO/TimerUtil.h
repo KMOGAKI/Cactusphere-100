@@ -22,34 +22,23 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _TIMER_UTIL_H_
+#define _TIMER_UTIL_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
+#ifndef _STDINT_H
+#include <stdint.h>
+#endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+// Initialization
+extern bool	TimerUtil_Initialize();
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+// Sleep
+extern void	TimerUtil_SleepUntilIntr();
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+// tick count (count/msec)
+extern uint32_t	TimerUtil_GetTickCount();
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
-
-#endif  // _PROPERTYITEMS_H_
+#endif  // _TIMER_UTIL_H_

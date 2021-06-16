@@ -22,34 +22,27 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_DOWATCHER_H_
+#define _DIO_DOWATCHER_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#ifndef CONTAINERS_VECTOR_H
+#include <vector.h>
+#endif
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+typedef struct DIO_DOWatchItem	DIO_DOWatchItem;
+typedef struct DIO_DOWatcher	DIO_DOWatcher;
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+// Initialization and cleanup
+extern DIO_DOWatcher*	DIO_DOWatcher_New(void);
+extern void	DIO_DOWatcher_Init(DIO_DOWatcher* me, vector watchItems);
+extern void	DIO_DOWatcher_Destroy(DIO_DOWatcher* me);
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
+extern vector DIO_DOWatcher_GetWatchItems(DIO_DOWatcher* me);
+extern bool DIO_DOWatcher_AddWatchItems(DIO_DOWatcher* me, DIO_DOWatchItem* watchItem);
+extern bool DIO_DOWatcher_DelWatchItems(DIO_DOWatcher* me, DIO_DOWatchItem* watchItem);
 
-#endif  // _PROPERTYITEMS_H_
+#endif  // _DIO_DOWATCHER_H_

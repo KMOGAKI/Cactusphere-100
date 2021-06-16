@@ -22,34 +22,15 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_DIFETCH_TIMERS_H_
+#define _DIO_DIFETCH_TIMERS_H_
 
-#ifndef _STDBOOL_H
-#include <stdbool.h>
+#ifndef _FETCH_TIMERS_H_
+#include <FetchTimers.h>
 #endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+// Initialization
+extern void	DIO_DIFetchTimers_InitForTimer(
+    FetchTimers* me, FetchItemBase* fetchItem);
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
-
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
-
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
-
-#endif  // _PROPERTYITEMS_H_
+#endif  // _DIO_DIFETCH_TIMERS_H_

@@ -22,34 +22,57 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#include "DIO_DIFetchTargets.h"
 
-#ifndef _STDBOOL_H
-#include <stdbool.h>
-#endif
+#include "DIO_DIFetchItem.h"
 
-#define PROPERTY_NAME_MAX_LEN	32
+// DIO_FetchTargets data members
+struct DIO_DIFetchTargets {
+    vector	mTargets;
+};
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+// Initialization and cleanup
+DIO_DIFetchTargets*
+DIO_DIFetchTargets_New(void)
+{
+    DIO_DIFetchTargets*	newObj =
+        (DIO_DIFetchTargets*)malloc(sizeof(DIO_DIFetchTargets));
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+    if (NULL != newObj) {
+        newObj->mTargets = vector_init(sizeof(DIO_DIFetchItem*));
+        if (NULL == newObj->mTargets) {
+            free(newObj);
+            return NULL;
+        }
+    }
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
+    return newObj;
+}
 
-#endif  // _PROPERTYITEMS_H_
+void
+DIO_DIFetchTargets_Destroy(DIO_DIFetchTargets* me)
+{
+    DIO_DIFetchTargets_Clear(me);
+    vector_destroy(me->mTargets);
+    free(me);
+}
+
+// Get current acquisition targets
+vector
+DIO_DIFetchTargets_GetFetchItems(DIO_DIFetchTargets* me)
+{
+    return me->mTargets;
+}
+
+// Manage acquisition targets
+void
+DIO_DIFetchTargets_Add(DIO_DIFetchTargets* me, const DIO_DIFetchItem* target)
+{
+    vector_add_last(me->mTargets, (void*)&target);
+}
+
+void
+DIO_DIFetchTargets_Clear(DIO_DIFetchTargets* me)
+{
+    vector_clear(me->mTargets);
+}

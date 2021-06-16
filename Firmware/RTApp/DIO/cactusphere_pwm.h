@@ -22,34 +22,20 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _CACTUSPHERE_PWM_H_
+#define _CACTUSPHERE_PWM_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
+#ifndef _STDINT_H
+#include <stdint.h>
+#endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#define ERROR_PWM_NOT_ENABLE           (ERROR_SPECIFIC - 5)
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+extern int32_t Cactusphere_PWM_GetOutput(uint32_t pin, bool *state);
+extern int32_t Cactusphere_PWM_SetOutput(uint32_t pin, bool state);
+extern int32_t Cactusphere_PWM_SetOutputPWM(uint32_t pin, uint32_t clockFrequency, uint32_t onTime, uint32_t offTime);
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
-
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
-
-#endif  // _PROPERTYITEMS_H_
+#endif  // _CACTUSPHERE_PWM_H_

@@ -22,34 +22,45 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_CONFIG_MGR_H_
+#define _DIO_CONFIG_MGR_H_
 
-#ifndef _STDBOOL_H
-#include <stdbool.h>
+#include "DIO_DIFetchConfig.h"
+#include "DIO_DIWatchConfig.h"
+#include "DIO_DOWatchConfig.h"
+#include "cactusphere_error.h"
+
+#ifndef NUM_DI
+#define NUM_DI 2
 #endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#ifndef NUM_DO
+#define NUM_DO 2
+#endif
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+#ifndef NUM_DIO
+#define NUM_DIO (NUM_DI + NUM_DO)
+#endif
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+#ifndef _STDIDONT_H
+#include <stdint.h>
+#endif
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
+// Initializaition and cleanup
+extern void	DIO_ConfigMgr_Initialize(void);
+extern void	DIO_ConfigMgr_Cleanup(void);
 
-#endif  // _PROPERTYITEMS_H_
+// Apply new configuration
+extern SphereWarning	DIO_ConfigMgr_LoadAndApplyIfChanged(
+    const unsigned char* payload, unsigned int payloadSize, vector item);
+
+// Receive command
+extern bool DIO_ConfigMgr_RecvStartCommand(int pinId);
+extern bool DIO_ConfigMgr_RecvStopCommand(int pinId);
+
+// Get configuratioin
+extern DIO_DIFetchConfig*  DIO_ConfigMgr_GetFetchConfig(void);
+extern DIO_DIWatchConfig*  DIO_ConfigMgr_GetWatchConfig(void);
+extern DIO_DOWatchConfig*  DIO_ConfigMgr_GetDOWatchConfig(void);
+
+#endif  // _DIO_CONFIG_MGR_H_

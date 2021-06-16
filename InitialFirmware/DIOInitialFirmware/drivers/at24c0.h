@@ -22,34 +22,12 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#pragma once
+#include <unistd.h>
+#include <stdint.h>
 
-#ifndef _STDBOOL_H
-#include <stdbool.h>
-#endif
+#define AT24C0_SIZE                     (128)
 
-#define PROPERTY_NAME_MAX_LEN	32
-
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
-
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
-
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
-
-#endif  // _PROPERTYITEMS_H_
+int AT24_Read(int fd, uint8_t *buf, uint8_t offset, size_t count);
+int AT24_PageWrite(int fd, const uint8_t *buf, uint8_t offset, size_t count);
+int AT24_Write(int fd, const uint8_t *buf, uint8_t offset, size_t count);

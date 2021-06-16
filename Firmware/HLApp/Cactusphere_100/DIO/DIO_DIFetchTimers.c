@@ -22,34 +22,22 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#include "DIO_DIFetchTimers.h"
 
-#ifndef _STDBOOL_H
-#include <stdbool.h>
-#endif
+#include "DIO_DIFetchItem.h"
+#include "LibDIO.h"
 
-#define PROPERTY_NAME_MAX_LEN	32
+// Initialization
+void
+DIO_DIFetchTimers_InitForTimer(FetchTimers* me, FetchItemBase* fetchItemBase)
+{
+    // configure and start the pulse counter for a pin
+    DIO_DIFetchItem*	fetchTime = (DIO_DIFetchItem*)fetchItemBase;
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
-
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
-
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
-
-#endif  // _PROPERTYITEMS_H_
+    if (fetchTime->isCountClear) {
+        DIO_Lib_ResetPulseCount(fetchTime->pinID, 0);
+        fetchTime->isCountClear = false;
+    }
+    DIO_Lib_ConfigPulseCounter(fetchTime->pinID, fetchTime->isPulseHigh,
+        fetchTime->minPulseWidth, fetchTime->maxPulseCount);
+}

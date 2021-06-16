@@ -22,34 +22,34 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_DIWATCHER_H_
+#define _DIO_DIWATCHER_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#ifndef CONTAINERS_VECTOR_H
+#include <vector.h>
+#endif
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+typedef struct DIO_DIWatchItem	DIO_DIWatchItem;
+typedef struct DIO_DIWatcher	DIO_DIWatcher;
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+// status of contact input monitoring target
+typedef struct DIO_DIWatchItemStat {
+    const DIO_DIWatchItem*	watchItem;  // watching specification
+    unsigned long	prevPulseCount; // previous counter value
+    unsigned long	currPulseCount; // last counter value
+} DIO_DIWatchItemStat;
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
+// Initialization and cleanup
+extern DIO_DIWatcher*	DIO_DIWatcher_New(void);
+extern void	DIO_DIWatcher_Init(DIO_DIWatcher* me, vector watchItems);
+extern void	DIO_DIWatcher_Destroy(DIO_DIWatcher* me);
 
-#endif  // _PROPERTYITEMS_H_
+// Check update
+extern bool	DIO_DIWatcher_DoWatch(DIO_DIWatcher* me);
+extern const vector	DIO_DIWatcher_GetLastChanges(DIO_DIWatcher* me);
+
+#endif  // _DIO_DIWATCHER_H_

@@ -22,34 +22,48 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_DIFETCH_CONFIG_H_
+#define _DIO_DIFETCH_CONFIG_H_
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#ifndef CONTAINERS_VECTOR_H
+#include <vector.h>
+#endif
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+#include "DIO_PropertyItem.h"
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
+typedef struct DIO_DIFetchConfig	DIO_DIFetchConfig;
+typedef struct _json_value	json_value;
 
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
+#ifndef NUM_DI
+#define NUM_DI 2
+#endif
 
-#endif  // _PROPERTYITEMS_H_
+#ifndef NUM_DO
+#define NUM_DO 2
+#endif
+
+#ifndef NUM_DIO
+#define NUM_DIO (NUM_DI + NUM_DO)
+#endif
+
+// Initialization and cleanup
+extern DIO_DIFetchConfig*	DIO_DIFetchConfig_New(void);
+extern void	DIO_DIFetchConfig_Destroy(DIO_DIFetchConfig* me);
+
+// Load DIO pulse conter configuration from JSON
+extern bool DIO_DIFetchConfig_LoadFromJSON(DIO_DIFetchConfig* me, DIO_PropertyData* data,
+    const json_value* json, vector propertyItem, const char* version);
+
+// Get configuration of DIO pulse conters
+extern vector	DIO_DIFetchConfig_GetFetchItems(DIO_DIFetchConfig* me);
+extern vector	DIO_DIFetchConfig_GetFetchItemPtrs(DIO_DIFetchConfig* me);
+
+// Get enable port number of DIDO pulse counter
+extern int DIO_DIFetchConfig_GetFetchEnablePorts(DIO_DIFetchConfig* me,
+    bool* counterStatus, bool* pollingStatus);
+
+#endif  // _DIO_DIFETCH_CONFIG_H_

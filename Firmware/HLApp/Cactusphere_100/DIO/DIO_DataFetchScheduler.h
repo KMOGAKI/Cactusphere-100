@@ -22,34 +22,25 @@
  * THE SOFTWARE.
  */
 
-#ifndef _PROPERTYITEMS_H_
-#define _PROPERTYITEMS_H_
+#ifndef _DIO_DATA_FETCH_SCHEDULER_H_
+#define _DIO_DATA_FETCH_SCHEDULER_H_
+
+#ifndef _DATA_FETCH_SCHEDULER_H_
+#include <DataFetchScheduler.h>
+#endif
 
 #ifndef _STDBOOL_H
 #include <stdbool.h>
 #endif
 
-#define PROPERTY_NAME_MAX_LEN	32
+#include "DIO_PropertyItem.h"
 
-typedef enum {
-    TYPE_NONE,
-    TYPE_STR,
-    TYPE_NUM,
-    TYPE_BOOL,
-    TYPE_NULL,
-} PropertyType;
+extern DataFetchScheduler* DIO_DataFetchScheduler_New(void);
+extern void	DIO_DataFetchScheduler_Init(DataFetchScheduler* me,
+    vector fetchItemPtrs, vector watchItems);
+extern bool DIO_DataFetchScheduler_StartDOOutput(DataFetchScheduler* me,
+    int pinId, vector doWatchItems);
+extern bool DIO_DataFetchScheduler_StopDOOutput(DataFetchScheduler* me,
+    int pinId, vector doWatchItems);
 
-typedef struct ResponsePropertyItem {
-    char        propertyName[PROPERTY_NAME_MAX_LEN + 1];  // property name
-    PropertyType type;
-    union {
-        uint32_t ul;
-        bool     b;
-        char*    str;
-    } value;
-} ResponsePropertyItem;
-
-extern void PropertyItems_AddItem(
-    vector item, const char* itemName, PropertyType type, ...);
-
-#endif  // _PROPERTYITEMS_H_
+#endif  // _DIO_DATA_FETCH_SCHEDULER_H_
