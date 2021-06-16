@@ -33,6 +33,7 @@
 #include <errno.h>
 #include <ctype.h>
 #include <getopt.h>
+#include <math.h>
 
 #include <sys/timerfd.h>
 
@@ -82,6 +83,9 @@ typedef enum {
     ExitCode_Init_LedTimer = 9,
 
     ExitCode_SetUpSysEvent_EventLoop = 10,
+
+    ExitCode_InterfaceConnectionStatus_Failed = 16,
+
     ExitCode_SetUpSysEvent_RegisterEvent,
 
     ExitCode_UpdateCallback_UnexpectedEvent,
@@ -124,11 +128,17 @@ static volatile sig_atomic_t exitCode = ExitCode_Success;
 #define USE_MODBUS
 #endif // PRODUCT_ATMARK_TECHNO_RS485
 
+#if (APP_PRODUCT_ID == PRODUCT_ATMARK_TECHNO_DIO)
+#define USE_DIO
+#define DIO_PORT_OFFSET 1
+#endif // PRODUCT_ATMARK_TECHNO_DIO
+
 #ifdef USE_MODBUS
 #include "ModbusConfigMgr.h"
 #include "ModbusFetchConfig.h"
 #include "LibModbus.h"
 #include "ModbusDataFetchScheduler.h"
+#define GPIO_USERLED MT3620_GPIO8
 #endif  // USE_MODBUS
 
 #ifdef USE_MODBUS_TCP
@@ -142,7 +152,18 @@ static volatile sig_atomic_t exitCode = ExitCode_Success;
 #include "DI_FetchConfig.h"
 #include "DI_WatchConfig.h"
 #include "LibDI.h"
+#define GPIO_USERLED MT3620_GPIO8
 #endif  // USE_DI
+
+#ifdef USE_DIO
+#include "DIO_ConfigMgr.h"
+#include "DIO_DataFetchScheduler.h"
+#include "DIO_DIFetchConfig.h"
+#include "DIO_DIWatchConfig.h"
+#include "DIO_PropertyItem.h"
+#include "LibDIO.h"
+#define GPIO_USERLED MT3620_GPIO23
+#endif  // USE_DIO
 
 static int ct_error = 0;
 
@@ -158,6 +179,32 @@ typedef enum {
     ConnectionType_Direct = 2
 } ConnectionType;
 
+/// <summary>
+/// Authentication state of the client with respect to the Azure IoT Hub.
+/// </summary>
+typedef enum {
+    /// <summary>Client is not authenticated by the Azure IoT Hub.</summary>
+    IoTHubClientAuthenticationState_NotAuthenticated = 0,
+    /// <summary>Client has initiated authentication to the Azure IoT Hub.</summary>
+    IoTHubClientAuthenticationState_AuthenticationInitiated = 1,
+    /// <summary>Client is authenticated by the Azure IoT Hub.</summary>
+    IoTHubClientAuthenticationState_Authenticated = 2
+} IoTHubClientAuthenticationState;
+
+/// <summary>
+/// Information such as the connection status to network and the reading status of EEPROM.
+/// (If even one is disabled, the Status LED will not turn on.)
+/// </summary>
+typedef struct {
+    bool isEepromReadSuccess;
+    bool isEepromDataValid;
+    IoTHubClientAuthenticationState IoTHubClientAuthState; // Authentication state with respect to the Azure IoT Hub.
+    bool isNetworkConnected;
+    bool isPropertySettingValid;
+} SphereStatus;
+
+SphereStatus sphereStatus = {false,false,IoTHubClientAuthenticationState_NotAuthenticated,false,false};
+
 // Azure IoT definitions.
 static char *scopeId = NULL;                                      // ScopeId for DPS.
 static char *hubHostName = NULL;                                  // Azure IoT Hub Hostname.
@@ -166,10 +213,11 @@ static ConnectionType connectionType = ConnectionType_NotDefined; // Type of con
 
 static IOTHUB_DEVICE_CLIENT_LL_HANDLE iothubClientHandle = NULL;
 static const int keepalivePeriodSeconds = 20;
-static bool iothubAuthenticated = false;
 static bool iothubFirstConnected = false;
 static const int deviceIdForDaaCertUsage = 1; // A constant used to direct the IoT SDK to use
                                               // the DAA cert under the hood.
+static const char wlan_networkInterface[] = "wlan0";
+static const char eth_networkInterface[] = "eth0";
 
 // Application update events are received via an event loop.
 static EventRegistration *updateEventReg = NULL;
@@ -197,11 +245,11 @@ const struct itimerspec watchdogInterval = { { 300, 0 },{ 300, 0 } };
 timer_t watchdogTimer;
 
 // Status LED
-enum {
+typedef enum {
     LED_OFF = 0,
     LED_ON,
     LED_BLINK,
-};
+} LED_Status;
 int gLedState = LED_OFF;
 int ledGpioFd = -1;
 
@@ -218,7 +266,7 @@ static const int AzureIoTMaxReconnectPeriodSeconds = 10 * 60;
 
 static int azureIoTPollPeriodSeconds = -1;
 
-#define MAX_SCHEDULER_NUM   3
+#define MAX_SCHEDULER_NUM   4
 static DataFetchScheduler* mTelemetrySchedulerArr[MAX_SCHEDULER_NUM] = { NULL };
 
 static void AzureTimerEventHandler(EventLoopTimer *timer);
@@ -228,6 +276,7 @@ static ExitCode ValidateUserConfiguration(void);
 static void ParseCommandLineArguments(int argc, char *argv[]);
 static bool SetupAzureIoTHubClientWithDaa(void);
 static bool SetupAzureIoTHubClientWithDps(void);
+static bool ChangeLedStatus(LED_Status led_status);
 
 typedef struct
 {
@@ -265,7 +314,7 @@ static void TerminationHandler(int signalNumber)
 bool
 IsAuthenticationDone(void)
 {
-    return iothubAuthenticated;
+    return (IoTHubClientAuthenticationState_Authenticated == sphereStatus.IoTHubClientAuthState) ? true : false;
 }
 
 void SetupWatchdog(void)
@@ -277,6 +326,42 @@ void SetupWatchdog(void)
 
     timer_create(CLOCK_MONOTONIC, &alarmEvent, &watchdogTimer);
     timer_settime(watchdogTimer, 0, &watchdogInterval, NULL);
+}
+
+/// <summary>
+/// Change the LED status.
+/// </summary>
+/// <returns>Returns false if the LED cannot be turned on.</returns>
+static bool ChangeLedStatus(LED_Status led_status)
+{
+    bool ret = true;
+    switch (led_status)
+    {
+    case LED_OFF:
+        gLedState = LED_OFF;
+        break;
+    case LED_BLINK:
+        gLedState = LED_BLINK;
+        break;
+    case LED_ON:
+        /// If even one value of "sphereStatus" is invalid, the LED cannot turn on.
+        if (sphereStatus.isEepromDataValid &&
+            sphereStatus.isNetworkConnected &&
+            sphereStatus.isEepromReadSuccess &&
+            sphereStatus.isPropertySettingValid &&
+            (IoTHubClientAuthenticationState_Authenticated == sphereStatus.IoTHubClientAuthState)) {
+            gLedState = LED_ON;
+        }
+        else {
+            gLedState = LED_BLINK;
+            ret = false;
+        }
+        break;
+    default:
+        ret = false;
+        break;
+    }
+    return ret;
 }
 
 // Must be called periodically
@@ -307,6 +392,10 @@ int main(int argc, char *argv[])
     mTelemetrySchedulerArr[DIGITAL_IN] = Factory_CreateScheduler(DIGITAL_IN);
     DI_ConfigMgr_Initialize();
 #endif  // USE_DI
+#ifdef USE_DIO
+    mTelemetrySchedulerArr[DIO] = Factory_CreateScheduler(DIO);
+    DIO_ConfigMgr_Initialize();
+#endif  // USE_DIO
 
     TelemetryItems_InitDictionary();
     SendRTApp_InitHandlers();
@@ -315,7 +404,11 @@ int main(int argc, char *argv[])
     err = GetEepromProperty(&eeprom);
     if (err < 0) {
         ct_error = -EEPROM_READ_ERROR;
-        gLedState = LED_BLINK;
+        sphereStatus.isEepromReadSuccess = false;
+        ChangeLedStatus(LED_BLINK);
+    }
+    else {
+        sphereStatus.isEepromReadSuccess = true;
     }
 
     static Networking_Interface_HardwareAddress ha;
@@ -363,6 +456,10 @@ int main(int argc, char *argv[])
     DI_ConfigMgr_Cleanup();
 #endif  // USE_DI
 
+#ifdef USE_DIO
+    DIO_ConfigMgr_Cleanup();
+#endif  // USE_DIO
+
     for (int i = 0; i < MAX_SCHEDULER_NUM; i++) {
         DataFetchScheduler* scheduler = mTelemetrySchedulerArr[i];
         if (NULL != scheduler) {
@@ -397,19 +494,32 @@ static void AzureTimerEventHandler(EventLoopTimer *timer)
         return;
     }
 
-    bool isNetworkReady = false;
-    if (Networking_IsNetworkingReady(&isNetworkReady) != -1) {
-        if (! isNetworkReady) {
-            iothubAuthenticated = false;
-            gLedState = LED_BLINK;
-        } else if (! iothubAuthenticated) {
+    // Check whether the device is connected to the internet.
+    Networking_InterfaceConnectionStatus eth_status;
+    Networking_InterfaceConnectionStatus wlan_status;
+    int ret_eth_status = Networking_GetInterfaceConnectionStatus(eth_networkInterface, &eth_status);
+    int ret_wlan_status = Networking_GetInterfaceConnectionStatus(wlan_networkInterface, &wlan_status);
+
+    if ((ret_eth_status == 0 && (eth_status & Networking_InterfaceConnectionStatus_ConnectedToInternet)) ||
+        (ret_wlan_status == 0 && (wlan_status & Networking_InterfaceConnectionStatus_ConnectedToInternet))) {
+        if (sphereStatus.IoTHubClientAuthState == IoTHubClientAuthenticationState_NotAuthenticated) {
             SetupAzureClient();
-            IoT_CentralLib_Initialize(
-                CACHE_BUF_SIZE, false);
+            IoT_CentralLib_Initialize(CACHE_BUF_SIZE, false);
         }
-    } else {
-        Log_Debug("Failed to get Network state\n");
+        sphereStatus.isNetworkConnected = true;
+        ChangeLedStatus(LED_ON);
     }
+    else {
+        sphereStatus.isNetworkConnected = false;
+        ChangeLedStatus(LED_BLINK);
+        if (errno != EAGAIN) {
+            Log_Debug("ERROR: Networking_GetInterfaceConnectionStatus: %d (%s)\n", errno,
+                strerror(errno));
+            exitCode = ExitCode_InterfaceConnectionStatus_Failed;
+            return;
+        }
+    }
+
 
     if (ct_error < 0) {
         goto dowork;
@@ -424,7 +534,7 @@ static void AzureTimerEventHandler(EventLoopTimer *timer)
     }
 
 dowork:
-    if (iothubAuthenticated) {
+    if (iothubClientHandle != NULL) {
         IoTHubDeviceClient_LL_DoWork(iothubClientHandle);
     }
 }
@@ -787,7 +897,7 @@ static ExitCode InitPeripheralsAndHandlers(void)
     // LED
 	Log_Debug("Opening MT3620_GPIO8 as output\n");
 	ledGpioFd =
-		GPIO_OpenAsOutput(MT3620_GPIO8, GPIO_OutputMode_PushPull, GPIO_Value_High);
+		GPIO_OpenAsOutput(GPIO_USERLED, GPIO_OutputMode_PushPull, GPIO_Value_High);
 	if (ledGpioFd < 0) {
 		Log_Debug("ERROR: Could not open LED: %s (%d).\n", strerror(errno), errno);
 		return ExitCode_TermHandler_SigTerm;
@@ -801,7 +911,7 @@ static ExitCode InitPeripheralsAndHandlers(void)
     }
 
     // LED ON
-    gLedState = LED_ON;
+    ChangeLedStatus(LED_ON);
 
     return ExitCode_Success;
 }
@@ -830,7 +940,16 @@ static void HubConnectionStatusCallback(IOTHUB_CLIENT_CONNECTION_STATUS result,
                                         IOTHUB_CLIENT_CONNECTION_STATUS_REASON reason,
                                         void *userContextCallback)
 {
-    iothubAuthenticated = (result == IOTHUB_CLIENT_CONNECTION_AUTHENTICATED);
+    Log_Debug("Azure IoT connection status: %s\n", GetReasonString(reason));
+
+    if (result != IOTHUB_CLIENT_CONNECTION_AUTHENTICATED) {
+        sphereStatus.IoTHubClientAuthState = IoTHubClientAuthenticationState_NotAuthenticated;
+        ChangeLedStatus(LED_BLINK);
+        return;
+    }
+
+    sphereStatus.IoTHubClientAuthState = IoTHubClientAuthenticationState_Authenticated;
+
     Log_Debug("IoT Hub Authenticated: %s\n", GetReasonString(reason));
 
     if (reason == IOTHUB_CLIENT_CONNECTION_OK) {
@@ -842,7 +961,8 @@ static void HubConnectionStatusCallback(IOTHUB_CLIENT_CONNECTION_STATUS result,
         }
 
         if (ct_error == -EEPROM_READ_ERROR) {
-            gLedState = LED_BLINK;
+            sphereStatus.isEepromReadSuccess = false;
+            ChangeLedStatus(LED_BLINK);
             cactusphere_error_notify(EEPROM_READ_ERROR);
             exitCode = ExitCode_TermHandler_SigTerm;
         } else {
@@ -860,13 +980,16 @@ static void HubConnectionStatusCallback(IOTHUB_CLIENT_CONNECTION_STATUS result,
             ret = DI_Lib_ReadRTAppVersion(rtAppVersion);
 #elif defined USE_MODBUS
             ret = Libmodbus_GetRTAppVersion(rtAppVersion);
+#elif defined USE_DIO
+            ret = DIO_Lib_ReadRTAppVersion(rtAppVersion);
 #endif
             if (ret) {
                 snprintf(propertyStr, sizeof(propertyStr), EventMsgTemplate, "RTAppVersion", rtAppVersion);
                 IoT_CentralLib_SendProperty(propertyStr);
             }
 
-            gLedState = LED_ON;
+            sphereStatus.isEepromReadSuccess = true;
+            ChangeLedStatus(LED_ON);
 
             static EventMsgData eepromProperty[] = {
                 {"SerialNumber", ""},
@@ -902,13 +1025,17 @@ static void HubConnectionStatusCallback(IOTHUB_CLIENT_CONNECTION_STATUS result,
                 ct_error = -ILLEGAL_PACKAGE;
             }
             if (ct_error < 0) {
-                gLedState = LED_BLINK;
+                sphereStatus.isEepromDataValid = false;
+                ChangeLedStatus(LED_BLINK);
                 cactusphere_error_notify(ILLEGAL_PACKAGE);
                 exitCode = ExitCode_TermHandler_SigTerm;
             }
+            else {
+                sphereStatus.isEepromDataValid = true;
+            }
         }
     } else {
-        gLedState = LED_BLINK;
+        ChangeLedStatus(LED_BLINK);
     }
 }
 
@@ -931,7 +1058,7 @@ static void SetupAzureClient(void)
     }
 
     if (!isAzureClientSetupSuccessful) {
-        gLedState = LED_BLINK;
+        ChangeLedStatus(LED_BLINK);
 
         // If we fail to connect, reduce the polling frequency, starting at
         // AzureIoTMinReconnectPeriodSeconds and with a backoff up to
@@ -958,8 +1085,12 @@ static void SetupAzureClient(void)
     struct timespec azureTelemetryPeriod = {.tv_sec = azureIoTPollPeriodSeconds, .tv_nsec = 0};
     SetEventLoopTimerPeriod(azureTimer, &azureTelemetryPeriod);
 
-    iothubAuthenticated = true;
-    gLedState = LED_ON;
+    // Set client authentication state to initiated. This is done to indicate that
+    // SetUpAzureIoTHubClient() has been called (and so should not be called again) while the
+    // client is waiting for a response via the ConnectionStatusCallback().
+    sphereStatus.IoTHubClientAuthState = IoTHubClientAuthenticationState_AuthenticationInitiated;
+
+    ChangeLedStatus(LED_ON);
 
     if (IoTHubDeviceClient_LL_SetOption(iothubClientHandle, OPTION_KEEP_ALIVE,
                                         &keepalivePeriodSeconds) != IOTHUB_CLIENT_OK) {
@@ -1033,6 +1164,7 @@ static void SendPropertyResponse(vector Send_PropertyItem)
     static const char* EventMsgTemplate_bool = "{ \"%s\": %s }";
     static const char* EventMsgTemplate_num  = "{ \"%s\": %u }";
     static const char* EventMsgTemplate_str  = "{ \"%s\": \"%s\" }";
+    static const char* EventMsgTemplate_null = "{ \"%s\": null }";
     char* propertyStr = NULL;
     size_t propertyStr_len = 0;
 
@@ -1069,6 +1201,15 @@ static void SendPropertyResponse(vector Send_PropertyItem)
                 }
                 free(curs->value.str);
                 break;
+            case TYPE_NULL:
+                propertyStr_len = strlen(curs->propertyName) + JSON_FORMAT_NUM;
+                propertyStr = (char *)malloc(propertyStr_len);
+                if (propertyStr) {
+                    memset(propertyStr, 0, propertyStr_len);
+                    snprintf(propertyStr, propertyStr_len, EventMsgTemplate_null,
+                             curs->propertyName, curs->value.ul);
+                }
+                break;
             default:
                 continue;
             }
@@ -1085,6 +1226,10 @@ static void SendPropertyResponse(vector Send_PropertyItem)
 static void ParseDeferredUpdateConfig(json_value* json,
     DeferredUpdateConfig* config, const char* key, vector item)
 {
+    if (! json) {
+        return;
+    }
+
     if (json->type != json_string) {
         json = json_GetKeyJson("value", json);
     }
@@ -1113,6 +1258,7 @@ static bool CheckDeferredUpdateConfig(const unsigned char* payload,
     json_value* osUpdateObj = NULL;
     json_value* fwUpdateObj = NULL;
     bool ret = false;
+    bool doResume = false;
 
     updateDeferring = true;
     Log_Debug("payload=%s", payload);
@@ -1124,14 +1270,29 @@ static bool CheckDeferredUpdateConfig(const unsigned char* payload,
         osUpdateObj = json_GetKeyJson("OSUpdateTime", desiredObj);
         fwUpdateObj = json_GetKeyJson("FWUpdateTime", desiredObj);
     }
+
     if (osUpdateObj != NULL) {
-        ParseDeferredUpdateConfig(osUpdateObj, &osUpdate, "OSUpdateTime", item);
+        if (osUpdateObj->type == json_null) {
+            memset(&osUpdate, 0, sizeof(DeferredUpdateConfig));
+            doResume = true;
+        } else {
+            ParseDeferredUpdateConfig(osUpdateObj, &osUpdate, "OSUpdateTime", item);
+        }
         ret = true;
     }
 
     if (fwUpdateObj != NULL) {
-        ParseDeferredUpdateConfig(fwUpdateObj, &fwUpdate, "FWUpdateTime", item);
+        if (fwUpdateObj->type == json_null) {
+            memset(&fwUpdate, 0, sizeof(DeferredUpdateConfig));
+            doResume = true;
+        } else {
+            ParseDeferredUpdateConfig(fwUpdateObj, &fwUpdate, "FWUpdateTime", item);
+        }
         ret = true;
+    }
+
+    if (doResume) {
+        SysEvent_ResumeEvent(SysEvent_Events_UpdateReadyForInstall);
     }
 
     return ret;
@@ -1168,12 +1329,14 @@ static void TwinCallback(DEVICE_TWIN_UPDATE_STATE updateState, const unsigned ch
             ModbusFetchConfig_GetFetchItemPtrs(ModbusConfigMgr_GetModbusFetchConfig()));
 
         if (err == NO_ERROR) {
-            gLedState = LED_ON;
+            sphereStatus.isPropertySettingValid = true;
+            ChangeLedStatus(LED_ON);
         } else { // ILLEGAL_PROPERTY
             // do not set ct_error and exitCode,
             // as it won't hang with this error.
             Log_Debug("ERROR: Receive illegal property.\n");
-            gLedState = LED_BLINK;
+            sphereStatus.isPropertySettingValid = false;
+            ChangeLedStatus(LED_BLINK);
             cactusphere_error_notify(err);
         }
         break;
@@ -1215,12 +1378,14 @@ static void TwinCallback(DEVICE_TWIN_UPDATE_STATE updateState, const unsigned ch
         SendPropertyResponse(Send_PropertyItem);
 
         if (err == NO_ERROR) {
-            gLedState = LED_ON;
+            sphereStatus.isPropertySettingValid = true;
+            ChangeLedStatus(LED_ON);
         } else { // ILLEGAL_PROPERTY
             // do not set ct_error and exitCode,
             // as it won't hang with this error.
             Log_Debug("ERROR: Receive illegal property.\n");
-            gLedState = LED_BLINK;
+            sphereStatus.isPropertySettingValid = false;
+            ChangeLedStatus(LED_BLINK);
             cactusphere_error_notify(err);
         }
         break;
@@ -1238,11 +1403,57 @@ static void TwinCallback(DEVICE_TWIN_UPDATE_STATE updateState, const unsigned ch
     }
 
 #endif  // USE_DI
+
+#ifdef USE_DIO
+    SphereWarning err = DIO_ConfigMgr_LoadAndApplyIfChanged(payload, payloadSize, Send_PropertyItem);
+    if (defupderr && err == UNSUPPORTED_PROPERTY) {
+        err = NO_ERROR;
+    }
+    switch (err)
+    {
+    case NO_ERROR:
+    case ILLEGAL_PROPERTY:
+        if (strstr(payload, "_DI") != NULL){
+            DIO_DataFetchScheduler_Init(
+                mTelemetrySchedulerArr[DIO],
+                DIO_DIFetchConfig_GetFetchItemPtrs(DIO_ConfigMgr_GetFetchConfig()),
+                DIO_DIWatchConfig_GetFetchItems(DIO_ConfigMgr_GetWatchConfig()));
+        }
+        SendPropertyResponse(Send_PropertyItem);
+
+        if (err == NO_ERROR) {
+            sphereStatus.isPropertySettingValid = true;
+            ChangeLedStatus(LED_ON);
+        } else { // ILLEGAL_PROPERTY
+            // do not set ct_error and exitCode,
+            // as it won't hang with this error.
+            Log_Debug("ERROR: Receive illegal property.\n");
+            sphereStatus.isPropertySettingValid = false;
+            ChangeLedStatus(LED_BLINK);
+            cactusphere_error_notify(err);
+        }
+        break;
+    case ILLEGAL_DESIRED_PROPERTY:
+        Log_Debug("ERROR: Receive illegal desired property.\n");
+        ct_error = -(int)err;
+        break;
+    case UNSUPPORTED_PROPERTY:
+        Log_Debug("ERROR: Receive unsupported property.\n");
+        ct_error = -(int)err;
+        break;
+
+    default:
+        break;
+    }
+
+#endif  // USE_DIO
+
     vector_destroy(Send_PropertyItem);
 
     if (ct_error < 0) {
         // hang
-        gLedState = LED_BLINK;
+        sphereStatus.isPropertySettingValid = false;
+        ChangeLedStatus(LED_BLINK);
         cactusphere_error_notify(err);
         exitCode = ExitCode_TermHandler_SigTerm;
     }
@@ -1326,6 +1537,92 @@ err:
     IoT_CentralLib_SendProperty(reportedPropertiesString);
 
 #endif  // USE_DI
+
+#ifdef USE_DIO
+    const char ClearCounterDIKey[] = "ClearCounter_DI";
+    const size_t ClearCounterDiLen = strlen(ClearCounterDIKey);
+    const char StartDOKey[] = "Start_DO";
+    const size_t StartDOLen = strlen(StartDOKey);
+    const char StopDOKey[] = "Stop_DO";
+    const size_t StopDOLen = strlen(StopDOKey);
+
+    if (0 == strncmp(method_name, ClearCounterDIKey, ClearCounterDiLen)) {
+        int pinId = strtol(&method_name[ClearCounterDiLen], NULL, 10) - DIO_PORT_OFFSET;
+        if (pinId < 0) {
+            goto err;
+        }
+
+        if (0 != strncmp(payload, "null", strlen("null"))) {
+            char *cmdPayload = (char *)calloc(size + 1, sizeof(char));
+            if (NULL == cmdPayload) {
+                goto err;
+            }
+            strncpy(cmdPayload, payload, size);
+            uint64_t initVal = strtoull(cmdPayload, NULL, 10);
+
+            if (initVal > 0x7FFFFFFF) {
+                free(cmdPayload);
+                goto err_value;
+            }
+            if (!DIO_Lib_ResetPulseCount((unsigned long)pinId, (unsigned long)initVal)) {
+                Log_Debug("DIDO_Lib_ResetPulseCount() error");
+                strcpy(deviceMethodResponse, "\"Reset Error\"");
+            } else {
+                strcpy(deviceMethodResponse, "\"Success\"");
+            }
+
+            free(cmdPayload);
+        } else {
+err_value:
+            //init value error
+            strcpy(deviceMethodResponse, "\"Illegal init value\"");
+        }
+    } else if (0 == strncmp(method_name, StartDOKey, StartDOLen)) {
+        int pinId = strtol(&method_name[StartDOLen], NULL, 10) - DIO_PORT_OFFSET;
+        if (pinId < 0) {
+            goto err;
+        }
+
+        if (DIO_ConfigMgr_RecvStartCommand(pinId)) {
+            DIO_DataFetchScheduler_StartDOOutput(mTelemetrySchedulerArr[DIO],
+                                                 pinId,DIO_DOWatchConfig_GetFetchItems(DIO_ConfigMgr_GetDOWatchConfig()));
+            sphereStatus.isPropertySettingValid = true;
+            ChangeLedStatus(LED_ON);
+            strcpy(deviceMethodResponse, "\"Success\""); 
+        } else {
+            sphereStatus.isPropertySettingValid = false;
+            ChangeLedStatus(LED_BLINK);
+            cactusphere_error_notify(ILLEGAL_PROPERTY);
+            strcpy(deviceMethodResponse, "\"Property Error\""); 
+        }
+    } else if (0 == strncmp(method_name, StopDOKey, StopDOLen)) {
+        int pinId = strtol(&method_name[StopDOLen], NULL, 10) - DIO_PORT_OFFSET;
+        if (pinId < 0) {
+            goto err;
+        }
+
+        DIO_DataFetchScheduler_StopDOOutput(mTelemetrySchedulerArr[DIO],
+                                            pinId,DIO_DOWatchConfig_GetFetchItems(DIO_ConfigMgr_GetDOWatchConfig()));
+        if (DIO_ConfigMgr_RecvStopCommand(pinId)) {
+            sphereStatus.isPropertySettingValid = true;
+            ChangeLedStatus(LED_ON);
+            strcpy(deviceMethodResponse, "\"Success\""); 
+        } else {
+            strcpy(deviceMethodResponse, "\"Property Error\""); 
+        }
+    } else {
+err:
+        strcpy(deviceMethodResponse, "\"Error\"");
+    }
+
+    // send result
+    *response_size = strlen(deviceMethodResponse);
+    *response = malloc(*response_size);
+    if (NULL != response) {
+        (void)memcpy(*response, deviceMethodResponse, *response_size);
+    }
+
+#endif  // USE_DIO
 end:
     return 200;
 }
