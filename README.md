@@ -21,9 +21,10 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 ### Firmware
 |フォルダー名|説明|
 |:--|:--|
-|HLApp/Cactusphere_100|高度なアプリケーション(接点入力モデル、RS485モデル共通)|
+|HLApp/Cactusphere_100|高度なアプリケーション(全モデル共通)|
 |RTApp/DI|リアルタイム対応アプリケーション(接点入力モデル)|
 |RTApp/RS485|リアルタイム対応アプリケーション(RS485モデル)|
+|RTApp/DIO|リアルタイム対応アプリケーション(接点入出力モデル)|
 
 ### InitialFirmware
 |フォルダー名|説明|
