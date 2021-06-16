@@ -31,7 +31,7 @@ https://armadillo.atmark-techno.com/resources/documents/cactusphere/manuals
 |:--|:--|
 |DIInitialFirmware|接点入力モデル初期ファーム|
 |RS485InitialFirmware|RS485モデル初期ファーム|
-|DIOInitialFirmware|DIOモデル初期ファーム|
+|DIOInitialFirmware|接点入出力モデル初期ファーム|
 
 ### DeviceTemplate
 |フォルダー名|説明|
